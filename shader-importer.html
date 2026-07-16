@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shader Importer - Gustav Pettersson</title><meta name="description" content="Showcase After working to implement this system we now have the possibility to render very nice looking animated shaders. On&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://gustavp.dev/media/plugins/syntaxHighlighter/prism-black.css"><link rel="canonical" href="https://gustavp.dev/shader-importer.html"><link rel="alternate" type="application/atom+xml" href="https://gustavp.dev/feed.xml"><link rel="alternate" type="application/json" href="https://gustavp.dev/feed.json"><meta property="og:title" content="Shader Importer"><meta property="og:image" content="https://gustavp.dev/media/posts/15/ShaderImportTool.png"><meta property="og:image:width" content="1446"><meta property="og:image:height" content="828"><meta property="og:site_name" content="Gustav Pettersson"><meta property="og:description" content="Showcase After working to implement this system we now have the possibility to render very nice looking animated shaders. On&hellip;"><meta property="og:url" content="https://gustavp.dev/shader-importer.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://gustavp.dev/assets/css/style.css?v=404ad15f94a482fa13b23765bf184808"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://gustavp.dev/shader-importer.html"},"headline":"Shader Importer","datePublished":"2025-04-04T14:25+02:00","dateModified":"2025-04-07T21:14+02:00","image":{"@type":"ImageObject","url":"https://gustavp.dev/media/posts/15/ShaderImportTool.png","height":828,"width":1446},"description":"Showcase After working to implement this system we now have the possibility to render very nice looking animated shaders. On&hellip;","author":{"@type":"Person","name":"Gustav Pettersson","url":"https://gustavp.dev/authors/gustav-pettersson/"},"publisher":{"@type":"Organization","name":"Gustav Pettersson"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template lines"><div class="container lines lines--right"><header class="header"><a href="https://gustavp.dev/" class="logo">Gustav Pettersson</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu">Menu</button><ul class="navbar__menu"><li><a href="https://gustavp.dev/" target="_self">Home</a></li><li><a href="https://gustavp.dev/thread-pool-2.html" target="_self">Thread pool</a></li><li class="active"><a href="https://gustavp.dev/shader-importer.html" target="_self">Shader Importer</a></li><li><a href="https://gustavp.dev/particlesystem.html" target="_self">Particle system</a></li><li class="has-submenu"><span class="is-separator" aria-haspopup="true">Game projects</span><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://gustavp.dev/blacksite-deep-horizon-2.html" target="_self">Echoes in the Murk</a></li><li><a href="https://gustavp.dev/blacksite-deep-horizon.html" target="_self">Blacksite: Deep Horizon</a></li><li><a href="https://gustavp.dev/order-of-the-roses.html" target="_self">Order of the Roses</a></li><li><a href="https://gustavp.dev/spores-of-malice.html" target="_self">Spores of Malice</a></li><li><a href="https://gustavp.dev/root-of-evil.html" target="_self">Root of Evil</a></li></ul></li><li><a href="https://gustavp.dev/about-me.html" target="_self">About me</a></li></ul></nav></header><main class="main post"><article class="content"><header class="content__inner content__header"><h1 class="content__title">Shader Importer</h1></header><figure class="content__featured-image"><div class="content__featured-image__inner is-img-loading"><img src="https://gustavp.dev/media/posts/15/ShaderImportTool.png" srcset="https://gustavp.dev/media/posts/15/responsive/ShaderImportTool-xs.webp 384w, https://gustavp.dev/media/posts/15/responsive/ShaderImportTool-sm.webp 600w, https://gustavp.dev/media/posts/15/responsive/ShaderImportTool-md.webp 768w, https://gustavp.dev/media/posts/15/responsive/ShaderImportTool-lg.webp 1200w, https://gustavp.dev/media/posts/15/responsive/ShaderImportTool-xl.webp 1600w" sizes="(min-width: 37.5em) 1600px, 80vw" loading="eager" height="828" width="1446" alt=""></div></figure><div class="content__inner"><div class="content__entry"><h4><span style="color: #236fa1;">Showcase</span></h4><p>After working to implement this system we now have the possibility to render very nice looking animated shaders. On the screen, on static models and on animated models.</p><figure class="post__image align-center"><img loading="lazy" src="https://gustavp.dev/media/posts/15/AllHudWithImguigif.gif" alt="" width="800" height="430"></figure><br>On screen shaders with Imgui to swap between the different effects. I also created the option to change colors of the shader in real time to easier adjust the colors to our engine (the colors do not match exactly compared to Shader Designer).<p></p><p> </p><figure class="post__image align-center"><img loading="lazy" src="https://gustavp.dev/media/posts/15/AnimatedShaderDrillgif.gif" alt="" width="800" height="430"></figure><br>Animated drill model rendering an effect when it is currently being attacked and is not in sight. This was added to make it easier for the player to find where the drills are when playing the game. <p></p><p> </p><figure class="post__image align-center"><img loading="lazy" src="https://gustavp.dev/media/posts/15/StaticLaserShadergif.gif" alt="" width="800" height="450"></figure><br>The laser here is a static model using a shader exported by Shader Designer and imported by my tool. It has two textures and the colors are extreme to create the glowing look. Something more subtle in this video is the screen on the gun. It displays the ammo type used and is also a shader that follows the same pipeline.<p></p><h4><span style="color: #236fa1;">About</span></h4><p>I created a pixel shader importer tool to be able to import pixel shaders created in Visual Studios tool called Shader Designer. This was a challenge I truly needed to dig deep into how models are rendered and how they are connected to both textures, shaders and the GPU.</p><p>This was a big project and something I am very pleased with how well it turned out for our games. Working together with the procedural artists in my group I have created a setup for them to be able to work with a visual node based tool. This is nothing required by the school or the project but something I felt was needed to highlight our games as much as possible.</p><figure class="post__image align-center"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/15/ShaderDesignerExample.PNG" alt="" width="1157" height="617" sizes="(min-width: 37.5em) 1600px, 80vw" srcset="https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-xs.webp 384w, https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-sm.webp 600w, https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-md.webp 768w, https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-lg.webp 1200w, https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-xl.webp 1600w"></figure><figcaption>Simple example of a fresnel effect using Shader Designer</figcaption></figure><h4><span style="color: #236fa1;">Render functions</span></h4><p>Shown in the code below is one of the more regular rendering functions of the tool.<br>If the shader tool holds the shader and the model it can be rendered using the code below. </p><pre class="language-cpp"><code>void ShaderTool::Render(DreamEngine::GraphicsStateStack&amp; aGraphicsStateStack)
+{
+	for (int i = 0; i &lt; myShouldRenderStaticVFX.size(); i++)
+	{
+		myStaticVFXType = static_cast&lt;eStaticVFXType&gt;(i);
+		switch (myStaticVFXType)
+		{
+		default:
+			aGraphicsStateStack.SetShaderToolMiscVarsBufferData(0.f, 0.f, myTotalVFXTimer);
+			break;
+		}
+
+		if (myShouldRenderStaticVFX[i] == true)
+		{
+			if (i != 1)
+			{
+				DrawShaderTool(i);
+			}
+		}
+	}
+
+	for (int i = 0; i &lt; myShouldRenderAnimatedVFX.size(); i++)
+	{
+		myAnimatedVFXType = static_cast&lt;eAnimatedVFXType&gt;(i);
+		switch (myAnimatedVFXType)
+		{
+		default:
+			aGraphicsStateStack.SetShaderToolMiscVarsBufferData(0.f, 0.f, myTotalVFXTimer);
+			break;
+		}
+
+		if (myShouldRenderAnimatedVFX[i] == true)
+		{
+			DrawShaderToolAnimated(i);
+		}
+	}
+}</code></pre><p>If there are special cases, for example if the shader need its own timer for some reason. I created rendering functions for those cases as well. <span style="color: #236fa1;">Data to the GPU</span></p><p>To be able to use and get all the correct data needed for the shaders I had to create a bunch of functions to send the correct data to the graphics engine. Some of the functions will be displayed in code below. These are not always needed for each shader, but to have the possibility of full functionality of the .hlsl exporter "Shader Designer" I needed to create them. </p><pre class="language-cpp"><code>void GraphicsStateStack::SetShaderToolMaterialVarsBufferData(DE::Vector4f aMaterialAmbient = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aMaterialDiffuse = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aMaterialSpecular = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aMaterialEmissive = DE::Vector4f{ 0,0,0,0 }, float aMaterialSpecularPower = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().MaterialAmbient = aMaterialAmbient;
+	myRenderStateStack.back().MaterialDiffuse = aMaterialDiffuse;
+	myRenderStateStack.back().MaterialSpecular = aMaterialSpecular;
+	myRenderStateStack.back().MaterialEmissive = aMaterialEmissive;
+	myRenderStateStack.back().MaterialSpecularPower = aMaterialSpecularPower;
+}
+
+void GraphicsStateStack::SetShaderToolLightVarsBufferData(DE::Vector4f aAmbientLight = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aLightColor[4] = 0, DE::Vector4f aLightAttenuation[4] = 0, DE::Vector3f aLightDirection[4] = 0, float aLightSpecularIntensity[4] = 0, unsigned int aIsPointLight[4] = 0, unsigned int aActivLights = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().AmbientLight = aAmbientLight;
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightColor) / sizeof(myRenderStateStack.back().LightColor[1]); i++)
+	{
+		myRenderStateStack.back().LightColor[i] = aLightColor[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightAttenuation) / sizeof(myRenderStateStack.back().LightAttenuation[1]); i++)
+	{
+		myRenderStateStack.back().LightAttenuation[i] = aLightAttenuation[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightDirection) / sizeof(myRenderStateStack.back().LightDirection[1]); i++)
+	{
+		myRenderStateStack.back().LightDirection[i] = aLightDirection[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightSpecularIntensity) / sizeof(myRenderStateStack.back().LightSpecularIntensity[1]); i++)
+	{
+		myRenderStateStack.back().LightSpecularIntensity[i] = aLightSpecularIntensity[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().IsPointLight) / sizeof(myRenderStateStack.back().IsPointLight[1]); i++)
+	{
+		myRenderStateStack.back().IsPointLight[i] = aIsPointLight[i];
+	}
+	myRenderStateStack.back().ActiveLights = aActivLights;
+}
+
+void GraphicsStateStack::SetShaderToolObjectVarsBufferData(DE::Matrix4x4f aLocalToWorld4x4 = 0, DE::Matrix4x4f aLocalToProjected4x4 = 0, DE::Matrix4x4f aWorldToLocal4x4 = 0, DE::Matrix4x4f aWorldToView4x4 = 0, DE::Matrix4x4f aUVTransform4x4 = 0, DE::Vector3f aEyePosition = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().LocalToWorld4x4 = aLocalToWorld4x4;
+	myRenderStateStack.back().LocalToProjected4x4 = aLocalToProjected4x4;
+	myRenderStateStack.back().WorldToLocal4x4 = aWorldToLocal4x4;
+	myRenderStateStack.back().WorldToView4x4 = aWorldToView4x4;
+	myRenderStateStack.back().UVTransform4x4 = aUVTransform4x4;
+	myRenderStateStack.back().EyePosition = aEyePosition;
+}
+
+void GraphicsStateStack::SetShaderToolMiscVarsBufferData(float aViewportWidth = 0, float aViewportHeight = 0, float aTime = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().ViewportWidth = aViewportWidth;
+	myRenderStateStack.back().ViewportHeight = aViewportHeight;
+	myRenderStateStack.back().Time = aTime;
+}
+
+void GraphicsStateStack::SetColorCorrectionBufferData(float someExposure, float someSaturation, DreamEngine::Vector3f someContrast, DreamEngine::Vector3f someBlackPoint, DreamEngine::Vector3f someTint)
+{
+	myRenderStateStack.back().shaderDataVersion = ++myLatestShaderDataVersion;
+	myRenderStateStack.back().exposure = someExposure;
+	myRenderStateStack.back().saturation = someSaturation;
+	myRenderStateStack.back().contrast = someContrast;
+	myRenderStateStack.back().blackPoint = someBlackPoint;
+	myRenderStateStack.back().tint = someTint;
+}</code></pre><h4><span style="color: #236fa1;">Example of implementation</span></h4><p>When creating tools I always consider the amount of work myself and other programmers will have to spend on implementing the result of the tool. For that reason I decided to implement my shader importer tool in our singleton to have easy access anywhere in the code without having any model or shader doubled. </p><p>Below is one example of how "drills" can be rendered using the tool. In this example we have three different drills and they are color coded. In this example we are using three different shaders to render them. </p><pre class="language-cpp"><code>for (int i = 0; i &lt; myLoadedObjects-&gt;GetDefencePoints().size(); i++)
+{
+	if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;IsTarget() &amp;&amp; myDrillLineOfSight[i] == true)
+	{
+		if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetCharID() == 'A')
+		{
+			MainSingleton::GetInstance()-&gt;GetShaderTool().Render(graphicsStateStack, engine.GetTotalTime(), myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetAnimatedModelInstance(), static_cast&lt;int&gt;(eAnimatedVFXType::FresnelRed));
+		}
+		else if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetCharID() == 'B')
+		{
+			MainSingleton::GetInstance()-&gt;GetShaderTool().Render(graphicsStateStack, engine.GetTotalTime(), myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetAnimatedModelInstance(), static_cast&lt;int&gt;(eAnimatedVFXType::FresnelBlue));
+		}
+		else if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetCharID() == 'C')
+		{
+			MainSingleton::GetInstance()-&gt;GetShaderTool().Render(graphicsStateStack, engine.GetTotalTime(), myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetAnimatedModelInstance(), static_cast&lt;int&gt;(eAnimatedVFXType::FresnelGreen));
+		}
+	}
+}</code></pre><p> </p></div></div></article></main><footer class="footer"><div class="footer__left"><div class="footer__copy"><p style="text-align: center;"><a href="https://gustavp.dev/about-me" target="_blank" rel="noopener noreferrer">About me</a></p></div></div><button onclick="backToTopFunction()" id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg><use xlink:href="https://gustavp.dev/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = { mobileMenuMode: 'sidebar', animationSpeed: 300, submenuWidth: 'auto', doubleClickTime: 500, mobileMenuExpandableSubmenus: true, relatedContainerForOverlayMenuSelector: '.navbar', };</script><script defer="defer" src="https://gustavp.dev/assets/js/scripts.min.js?v=9c5ab7a87221183f149a42b3cceb7956"></script><script>function publiiDetectLoadedImages () {
+         var images = document.querySelectorAll('img[loading]:not(.is-loaded)');
+         for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+               images[i].classList.add('is-loaded');
+               images[i].parentNode.classList.remove('is-img-loading');
+            } else {
+               images[i].addEventListener('load', function () {
+                  this.classList.add('is-loaded');
+                  this.parentNode.classList.remove('is-img-loading');
+               }, false);
+            }
+         }
+      }
+      publiiDetectLoadedImages();</script><script defer="defer" src="https://gustavp.dev/media/plugins/syntaxHighlighter/prism.js"></script><script src="https://gustavp.dev/media/plugins/pagePrefetching/quicklink.umd.js"></script><script>window.addEventListener('load', () => {
+					quicklink.listen({
+						prerender: true,
+						el: document.querySelector('body'),
+						delay: 0,
+						limit: Infinity,
+						throttle: Infinity,
+						timeout: 2000
+					});
+				});</script></body></html>

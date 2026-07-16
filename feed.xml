@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+    <title>Gustav Pettersson</title>
+    <link href="https://gustavp.dev/feed.xml" rel="self" />
+    <link href="https://gustavp.dev" />
+    <updated>2026-03-01T20:40:50+01:00</updated>
+    <author>
+        <name>Gustav Pettersson</name>
+    </author>
+    <id>https://gustavp.dev</id>
+
+    <entry>
+        <title>Echoes in the Murk</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/blacksite-deep-horizon-2.html"/>
+        <id>https://gustavp.dev/blacksite-deep-horizon-2.html</id>
+        <media:content url="https://gustavp.dev/media/posts/16/Boat_Gameplay.gif" medium="image" />
+
+        <updated>2025-11-23T20:46:28+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/16/Boat_Gameplay.gif" alt="" />
+                    Echoes in the Murk is a two player co-op adventure game inspired by Dredge and Ship of fools. Made in&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/16/Boat_Gameplay.gif" class="type:primaryImage" alt="" /></p>
+                <p>Echoes in the Murk is a two player co-op adventure game inspired by Dredge and Ship of fools. Made in our engine, Dream Engine.</p>
+<p><a href="https://felipefleming.itch.io/echoes-in-the-murk" target="_blank" rel="noopener noreferrer">Itch: Echoes in the Murk</a></p>
+<h5><span style="color: #3598db;">Details</span></h5>
+<ul>
+<li>Genre: Co-op, Adventure</li>
+<li>Engine: Dream Engine</li>
+<li>Duration: 9 weeks at 100%</li>
+<li>Team: 6 programmers, 4 artists, 2 level design, 2 procedural artists</li>
+</ul>
+<h6><span style="color: #3598db;">My contributions for this project:</span></h6>
+<ul>
+<li>Water implementation</li>
+<li>Shader import tool</li>
+<li>Post processing</li>
+<li>Particle system</li>
+</ul>
+<h4><span style="color: #236fa1;">Water implementation</span></h4>
+<p>If one aspect of a game is visible at all times, it should look nice. That is what I feel when we started this project. For that reason I did spend a lot of time trying to perfect the visuals of the water as far as possible within the time limit. To create the water I worked very close with our procedural artists. </p>
+<p>As the water was a huge part of the game we wanted it to look and feel good. To start out we created a simple plane that was simulated using a vertex shader. It was rendered using a custom HLSL pixel shader with input buffers from the VFX importer tool I created in an earlier project. <br><br></p>
+<figure class="post__image" ><figure class="post__image post__image--center"><img loading="lazy"  style="outline: 3px solid rgba(var(--color-primary-rgb), 0.55) !important;" src="https://gustavp.dev/media/posts/16/Water_First_Config_Inputs.gif" alt="Early iteration with shader input" width="800" height="487"></figure>
+<figcaption >Early iteration of water with directional input using Dear ImGui</figcaption>
+</figure>
+<p> </p>
+<h4><span style="color: #236fa1;">Shader import tool</span></h4>
+<p>I created a shader import tool to make the pipeline easier for our procedural artists to create pixel shaders using Visual Studio's shader graph editor. The graph editor is called Shader Designer. The tool was really helpful in implementing the shaders into our engine.  </p>
+<figure class="post__image" ><figure class="post__image post__image--center"><img loading="lazy"  src="https://gustavp.dev/media/posts/16/Shader_Boat_Water.gif" alt="" width="800" height="502"></figure>
+<figcaption >Water pushed around boat and from propeller</figcaption>
+</figure>
+<p>I have a full page dedicated to the Shader Importer tool. If you wish to read more about it press the link below.<br><strong><span style="color: #3598db;"><a href="https://gustavp.dev/shader-importer.html">Shader Importer</a></span></strong></p>
+<h4><span style="color: #236fa1;">Post processing</span></h4>
+<h6><span style="color: #236fa1;">See through meshes</span></h6>
+<p>When taking on this project I delved deeper to learn more about shaders and how they can affect the feeling of the game. To ease the work from our level designers I wanted to create a dynamic mesh shader that applied to any mesh when it is in front of the boat. <br>I started to create the shader and decided to remove every even numbered pixel from the mesh. This created a good see through effect that I wanted.</p>
+<p>To apply the shader to the mesh blocking the visuals of the boat I sent rays to verify what the first object hit was. If it was the boat then nothing happened. If anything other than the boat was hit the mesh was hijacked from the rendering loop and rendered via my shader importer (as shown above) using my custom see through shader. I am pleased with the effect it gave and I got a deeper understanding of how a rendering pipeline can work.  </p>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://gustavp.dev/media/posts/16/Transparent_shader.gif" alt="" width="800" height="437"></figure>
+<p> </p>
+<h6><span style="color: #236fa1;">Underwater effect</span></h6>
+<p>To create a more atmospheric water feeling I wanted to create a distinct visual difference between above water and below water. This meant that all meshes under the water needed to be visually modified. With Hampus (one of our procedural artists) we created a depth fade below the water surface. While in the process of creating the depth fade we also created a "foam" at the surface of the water if it collided with any mesh. </p>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://gustavp.dev/media/posts/16/Water_Visual_Effects.gif" alt="" width="800" height="450"></figure><br><br></p>
+<h4><span style="color: #236fa1;">Particle system</span></h4>
+<p>The particle system used in this game project is something I have developed during my time at The Game Assembly and the tool is something I am very proud of. The tool has been implemented and used in every game project I have done since the creation of the tool (5 game projects). </p>
+<figure class="post__image" ><figure class="post__image post__image--center"><img loading="lazy"  src="https://gustavp.dev/media/posts/16/Particle_Effects.gif" alt="Particle systems (explosions from canons and water leaks on boat)" width="800" height="445"></figure>
+<figcaption >Particle systems (explosions from canons and water leaks on the boat)</figcaption>
+</figure>
+<p>The tool started out as a 2D particle system only but has since had a few upgrades. If you wish to read more about the particle system please click the link below.<br><span style="color: #3598db;"><a href="https://gustavp.dev/particlesystem.html" style="color: #3598db;">Particle System</a></span></p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Shader Importer</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/shader-importer.html"/>
+        <id>https://gustavp.dev/shader-importer.html</id>
+        <media:content url="https://gustavp.dev/media/posts/15/ShaderImportTool.png" medium="image" />
+
+        <updated>2025-04-04T14:25:21+02:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/15/ShaderImportTool.png" alt="" />
+                    Showcase After working to implement this system we now have the possibility to render very nice looking animated shaders. On&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/15/ShaderImportTool.png" class="type:primaryImage" alt="" /></p>
+                <h4><span style="color: #236fa1;">Showcase</span></h4>
+<p>After working to implement this system we now have the possibility to render very nice looking animated shaders. On the screen, on static models and on animated models.</p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://gustavp.dev/media/posts/15/AllHudWithImguigif.gif" alt="" width="800" height="430"></figure><br>On screen shaders with Imgui to swap between the different effects. I also created the option to change colors of the shader in real time to easier adjust the colors to our engine (the colors do not match exactly compared to Shader Designer).</p>
+<p> </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://gustavp.dev/media/posts/15/AnimatedShaderDrillgif.gif" alt="" width="800" height="430"></figure><br>Animated drill model rendering an effect when it is currently being attacked and is not in sight. This was added to make it easier for the player to find where the drills are when playing the game. </p>
+<p> </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://gustavp.dev/media/posts/15/StaticLaserShadergif.gif" alt="" width="800" height="450"></figure><br>The laser here is a static model using a shader exported by Shader Designer and imported by my tool. It has two textures and the colors are extreme to create the glowing look. Something more subtle in this video is the screen on the gun. It displays the ammo type used and is also a shader that follows the same pipeline.</p>
+<h4><span style="color: #236fa1;">About</span></h4>
+<p>I created a pixel shader importer tool to be able to import pixel shaders created in Visual Studios tool called Shader Designer. This was a challenge I truly needed to dig deep into how models are rendered and how they are connected to both textures, shaders and the GPU.</p>
+<p>This was a big project and something I am very pleased with how well it turned out for our games. Working together with the procedural artists in my group I have created a setup for them to be able to work with a visual node based tool. This is nothing required by the school or the project but something I felt was needed to highlight our games as much as possible.</p>
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/15/ShaderDesignerExample.PNG" alt="" width="1157" height="617" sizes="(min-width: 37.5em) 1600px, 80vw" srcset="https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-xs.webp 384w ,https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-sm.webp 600w ,https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-md.webp 768w ,https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-lg.webp 1200w ,https://gustavp.dev/media/posts/15/responsive/ShaderDesignerExample-xl.webp 1600w"></figure>
+<figcaption >Simple example of a fresnel effect using Shader Designer</figcaption>
+</figure>
+<h4><span style="color: #236fa1;">Render functions</span></h4>
+<p>Shown in the code below is one of the more regular rendering functions of the tool. <br>If the shader tool holds the shader and the model it can be rendered using the code below. </p>
+<pre class="language-cpp"><code>void ShaderTool::Render(DreamEngine::GraphicsStateStack&amp; aGraphicsStateStack)
+{
+	for (int i = 0; i &lt; myShouldRenderStaticVFX.size(); i++)
+	{
+		myStaticVFXType = static_cast&lt;eStaticVFXType&gt;(i);
+		switch (myStaticVFXType)
+		{
+		default:
+			aGraphicsStateStack.SetShaderToolMiscVarsBufferData(0.f, 0.f, myTotalVFXTimer);
+			break;
+		}
+
+		if (myShouldRenderStaticVFX[i] == true)
+		{
+			if (i != 1)
+			{
+				DrawShaderTool(i);
+			}
+		}
+	}
+
+	for (int i = 0; i &lt; myShouldRenderAnimatedVFX.size(); i++)
+	{
+		myAnimatedVFXType = static_cast&lt;eAnimatedVFXType&gt;(i);
+		switch (myAnimatedVFXType)
+		{
+		default:
+			aGraphicsStateStack.SetShaderToolMiscVarsBufferData(0.f, 0.f, myTotalVFXTimer);
+			break;
+		}
+
+		if (myShouldRenderAnimatedVFX[i] == true)
+		{
+			DrawShaderToolAnimated(i);
+		}
+	}
+}</code></pre>
+<p>If there are special cases, for example if the shader need its own timer for some reason. I created rendering functions for those cases as well. <span style="color: #236fa1;">Data to the GPU</span></p>
+<p>To be able to use and get all the correct data needed for the shaders I had to create a bunch of functions to send the correct data to the graphics engine. Some of the functions will be displayed in code below. These are not always needed for each shader, but to have the possibility of full functionality of the .hlsl exporter "Shader Designer" I needed to create them. </p>
+<pre class="language-cpp"><code>void GraphicsStateStack::SetShaderToolMaterialVarsBufferData(DE::Vector4f aMaterialAmbient = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aMaterialDiffuse = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aMaterialSpecular = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aMaterialEmissive = DE::Vector4f{ 0,0,0,0 }, float aMaterialSpecularPower = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().MaterialAmbient = aMaterialAmbient;
+	myRenderStateStack.back().MaterialDiffuse = aMaterialDiffuse;
+	myRenderStateStack.back().MaterialSpecular = aMaterialSpecular;
+	myRenderStateStack.back().MaterialEmissive = aMaterialEmissive;
+	myRenderStateStack.back().MaterialSpecularPower = aMaterialSpecularPower;
+}
+
+void GraphicsStateStack::SetShaderToolLightVarsBufferData(DE::Vector4f aAmbientLight = DE::Vector4f{ 0,0,0,0 }, DE::Vector4f aLightColor[4] = 0, DE::Vector4f aLightAttenuation[4] = 0, DE::Vector3f aLightDirection[4] = 0, float aLightSpecularIntensity[4] = 0, unsigned int aIsPointLight[4] = 0, unsigned int aActivLights = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().AmbientLight = aAmbientLight;
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightColor) / sizeof(myRenderStateStack.back().LightColor[1]); i++)
+	{
+		myRenderStateStack.back().LightColor[i] = aLightColor[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightAttenuation) / sizeof(myRenderStateStack.back().LightAttenuation[1]); i++)
+	{
+		myRenderStateStack.back().LightAttenuation[i] = aLightAttenuation[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightDirection) / sizeof(myRenderStateStack.back().LightDirection[1]); i++)
+	{
+		myRenderStateStack.back().LightDirection[i] = aLightDirection[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().LightSpecularIntensity) / sizeof(myRenderStateStack.back().LightSpecularIntensity[1]); i++)
+	{
+		myRenderStateStack.back().LightSpecularIntensity[i] = aLightSpecularIntensity[i];
+	}
+	for (int i = 0; i &lt; sizeof(myRenderStateStack.back().IsPointLight) / sizeof(myRenderStateStack.back().IsPointLight[1]); i++)
+	{
+		myRenderStateStack.back().IsPointLight[i] = aIsPointLight[i];
+	}
+	myRenderStateStack.back().ActiveLights = aActivLights;
+}
+
+void GraphicsStateStack::SetShaderToolObjectVarsBufferData(DE::Matrix4x4f aLocalToWorld4x4 = 0, DE::Matrix4x4f aLocalToProjected4x4 = 0, DE::Matrix4x4f aWorldToLocal4x4 = 0, DE::Matrix4x4f aWorldToView4x4 = 0, DE::Matrix4x4f aUVTransform4x4 = 0, DE::Vector3f aEyePosition = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().LocalToWorld4x4 = aLocalToWorld4x4;
+	myRenderStateStack.back().LocalToProjected4x4 = aLocalToProjected4x4;
+	myRenderStateStack.back().WorldToLocal4x4 = aWorldToLocal4x4;
+	myRenderStateStack.back().WorldToView4x4 = aWorldToView4x4;
+	myRenderStateStack.back().UVTransform4x4 = aUVTransform4x4;
+	myRenderStateStack.back().EyePosition = aEyePosition;
+}
+
+void GraphicsStateStack::SetShaderToolMiscVarsBufferData(float aViewportWidth = 0, float aViewportHeight = 0, float aTime = 0)
+{
+	myRenderStateStack.back().shaderToolDataVersion = ++myLatestShaderToolDataVersion;
+	myRenderStateStack.back().ViewportWidth = aViewportWidth;
+	myRenderStateStack.back().ViewportHeight = aViewportHeight;
+	myRenderStateStack.back().Time = aTime;
+}
+
+void GraphicsStateStack::SetColorCorrectionBufferData(float someExposure, float someSaturation, DreamEngine::Vector3f someContrast, DreamEngine::Vector3f someBlackPoint, DreamEngine::Vector3f someTint)
+{
+	myRenderStateStack.back().shaderDataVersion = ++myLatestShaderDataVersion;
+	myRenderStateStack.back().exposure = someExposure;
+	myRenderStateStack.back().saturation = someSaturation;
+	myRenderStateStack.back().contrast = someContrast;
+	myRenderStateStack.back().blackPoint = someBlackPoint;
+	myRenderStateStack.back().tint = someTint;
+}</code></pre>
+<h4><span style="color: #236fa1;">Example of implementation</span></h4>
+<p>When creating tools I always consider the amount of work myself and other programmers will have to spend on implementing the result of the tool. For that reason I decided to implement my shader importer tool in our singleton to have easy access anywhere in the code without having any model or shader doubled. </p>
+<p>Below is one example of how "drills" can be rendered using the tool. In this example we have three different drills and they are color coded. In this example we are using three different shaders to render them. </p>
+<pre class="language-cpp"><code>for (int i = 0; i &lt; myLoadedObjects-&gt;GetDefencePoints().size(); i++)
+{
+	if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;IsTarget() &amp;&amp; myDrillLineOfSight[i] == true)
+	{
+		if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetCharID() == 'A')
+		{
+			MainSingleton::GetInstance()-&gt;GetShaderTool().Render(graphicsStateStack, engine.GetTotalTime(), myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetAnimatedModelInstance(), static_cast&lt;int&gt;(eAnimatedVFXType::FresnelRed));
+		}
+		else if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetCharID() == 'B')
+		{
+			MainSingleton::GetInstance()-&gt;GetShaderTool().Render(graphicsStateStack, engine.GetTotalTime(), myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetAnimatedModelInstance(), static_cast&lt;int&gt;(eAnimatedVFXType::FresnelBlue));
+		}
+		else if (myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetCharID() == 'C')
+		{
+			MainSingleton::GetInstance()-&gt;GetShaderTool().Render(graphicsStateStack, engine.GetTotalTime(), myLoadedObjects-&gt;GetDefencePoints()[i]-&gt;GetAnimatedModelInstance(), static_cast&lt;int&gt;(eAnimatedVFXType::FresnelGreen));
+		}
+	}
+}</code></pre>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Blacksite: Deep Horizon</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/blacksite-deep-horizon.html"/>
+        <id>https://gustavp.dev/blacksite-deep-horizon.html</id>
+        <media:content url="https://gustavp.dev/media/posts/14/SkillShotGrapplingHookgif.gif" medium="image" />
+
+        <updated>2025-04-04T10:09:59+02:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/14/SkillShotGrapplingHookgif.gif" alt="" />
+                    Blacksite: Deep Horizon is a first person wave defence game inspired by Titanfall Frontier Defense. Made in our engine, Dream&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/14/SkillShotGrapplingHookgif.gif" class="type:primaryImage" alt="" /></p>
+                <p>Blacksite: Deep Horizon is a first person wave defence game inspired by Titanfall Frontier Defense. Made in our engine, Dream Engine.</p>
+<p><a href="https://felipefleming.itch.io/blacksite-deephorizon" target="_blank" rel="noopener noreferrer">Itch: Blacksite: Deep Horizon</a></p>
+<h5><span style="color: #3598db;">Details</span></h5>
+<ul>
+<li>Genre: FPS, wave defence</li>
+<li>Engine: Dream Engine</li>
+<li>Duration: 16 weeks at 50%</li>
+<li>Team: 6 programmers, 4 artists, 2 level design, 2 procedural artists</li>
+</ul>
+<h6><span style="color: #3598db;">My contributions for this project:</span></h6>
+<ul>
+<li>Shader import tool</li>
+<li>Instanced models</li>
+<li>Post processing</li>
+<li>Particle system</li>
+</ul>
+<h4><span style="color: #236fa1;">Shader import tool</span></h4>
+<p>I created a shader import tool to make the pipeline easier for our procedural artists to create pixel shaders using Visual Studio's shader graph editor. The graph editor is called Shader Designer. The tool was really helpful in implementing the shaders into our engine. </p>
+<p>I decided to rewrite our structure for our previous buffers send to the GPU to be offset by the amount used by shader designer to allow for easy implementation without having the requirement to edit the .hlsl file exported by Shader Designer. This took some time to figure out and make it work as intended without breaking any previous functionality of our code. </p>
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/14/DrillFresnelgif.gif" alt="" width="800" height="470"></figure>
+<figcaption >One of the shaders imported using the tool.</figcaption>
+</figure>
+<p>I have a full page dedicated to the Shader Importer tool. If you wish to read more about it press the link below.<br><strong><span style="color: #3598db;"><a href="https://gustavp.dev/shader-importer.html">Shader Importer</a></span></strong></p>
+<h4><span style="color: #236fa1;">Instanced models</span></h4>
+<p>To help with performance I changed our model loading and rendering to using a instanced system. When using instanced models only one unique model is loaded and all objects using that exact model draws from the same model. Instead of each object having its own model. </p>
+<p>The code below loads the models on a separate thread when the game starts. This is started in the splash screen to load the levels as fast as possible when the splash screen is finished. </p>
+<pre class="language-cpp"><code>const std::string modelPath(aLevelData.fbxPaths[someUntaggedID[i]].begin(), aLevelData.fbxPaths[someUntaggedID[i]].end());
+
+auto it = aInstancersMap-&gt;find(modelPath);
+
+if (it == aInstancersMap-&gt;end()) 
+{
+    DE::ModelInstancer inst;
+    std::wstring path = L"../Assets/";
+    if (modelPath.size() &gt; 0)
+    {
+        path += std::wstring(modelPath.begin(), modelPath.end());
+    }
+    else
+    {
+        path = L"D:\Perforce P7\DreamEngine\Assets\3D\cubePrimitive.fbx";  //Failsafe if model was not found.
+    }
+
+    std::shared_ptr&lt;DE::Model&gt; mdl = CustomLoad::LoadModel(path).GetModel();
+    inst.Init(mdl);
+    path = std::wstring(path.begin(), path.end() - 4);
+    CustomLoad::AssignMaterials(path, mdl, inst);
+    aInstancersMap-&gt;insert(std::make_pair(modelPath, inst));
+
+    loadingModelMutex.lock();
+    someModelInstancers-&gt;push_back(&amp;aInstancersMap-&gt;at(modelPath));
+    loadingModelMutex.unlock();
+}</code></pre>
+<p>After all the models are loaded only the transform of each model are pushed into the  vector of models. As the code below shows.</p>
+<pre class="language-cpp"><code>for (int i = 0; i &lt; someUntaggedID.size(); i++)
+{
+    const std::string modelPath(aLevelData.fbxPaths[someUntaggedID[i]].begin(), aLevelData.fbxPaths[someUntaggedID[i]].end());
+    auto it = aInstancersMap-&gt;find(modelPath);
+    it-&gt;second.AddInstance(aLevelData.transforms[someUntaggedID[i]]);
+}</code></pre>
+<p>This setup of pre loading the models on a separate thread and then only pushing the transforms when loading a level reduced our loading time from about 16 seconds to around 1 second when loading the same level. </p>
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/14/LoadingTimeIngamegif.gif" alt="" width="800" height="450"></figure>
+<figcaption >Loading time after model instancing was finished</figcaption>
+</figure>
+<h4><span style="color: #236fa1;">Post processing</span></h4>
+<p>Using the shader importer tool I created, I added an on screen function to render a shader on the screen instead of on a model in the world. Adding the on screen effects gives a great feeling of what is happening in the game while playing.</p>
+<div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/DamageHud.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/14/DamageHudgif.gif" alt="One of the earliest VFX in our game and engine" width="600" height="440"></figure> </a>
+<figcaption >Damage effect</figcaption>
+</figure>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/HealingHud.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/14/HealingHudgif.gif" alt="" width="600" height="443"></figure> </a>
+<figcaption >Healing effect</figcaption>
+</figure>
+</div>
+<h4><span style="color: #236fa1;">Particle system</span></h4>
+<p>The particle system used in this game project is something I have developed during my time at The Game Assembly and the tool is something I am very proud of. The tool has been implemented and used in every game project I have done since the creation of the tool (4 game projects). </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://gustavp.dev/media/posts/14/RocketParticleSystemExplosiongif.gif" alt="" width="800" height="497"></figure>
+<p>The tool started out as a 2D particle system only but has since had a few upgrades. If you wish to read more about the particle system please click the link below.<br><span style="color: #3598db;"><a href="https://gustavp.dev/particlesystem.html" style="color: #3598db;">Particle System</a></span></p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Root of Evil</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/root-of-evil.html"/>
+        <id>https://gustavp.dev/root-of-evil.html</id>
+        <media:content url="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__13-06-56_trim-ezgif.com-optimize.gif" medium="image" />
+
+        <updated>2025-02-15T15:31:34+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__13-06-56_trim-ezgif.com-optimize.gif" alt="" />
+                    Root of Evil was made in C++ using an engine called The Game Engine, provided to us by The Game&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__13-06-56_trim-ezgif.com-optimize.gif" class="type:primaryImage" alt="" /></p>
+                <p class="align-left">Root of Evil was made in C++ using an engine called The Game Engine, provided to us by The Game Assembly. The Game Engine uses DX11.</p>
+<p><a href="https://phicko.itch.io/root-of-evil" target="_blank" rel="noopener noreferrer">Itch.io: Root of Evil</a></p>
+<h5><span style="color: #3598db;">Details</span></h5>
+<ul>
+<li>Genre: 2.5D Platformer</li>
+<li>Engine: The Game Engine</li>
+<li>Duration: 12 weeks at 50%</li>
+<li>Team: 6 programmers, 4 artists, 3 level design, 3 procedural artists</li>
+</ul>
+<h6><span style="color: #3598db;">My contributions for this project:</span></h6>
+<ul>
+<li>Particle system</li>
+<li>Disintegrating block</li>
+<li>Separate threading for Update and Render loops with double buffers</li>
+</ul>
+<h4><span style="color: #236fa1;">Particle System</span></h4>
+<p>I created a particle system for this project to involve our artists much more in the visual appeal for our game. As The Game Engine we used were limited in its capabilities I wanted to add another element to our game that created a more appealing setting to be immersed in.</p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__11-25-04-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="434"></figure>
+<p>The particle system is something I have been working on during most of the game projects at school and is something I am very proud of.</p>
+<p>To get a more in depth explanation of the particle system click the link below.<br><a href="https://gustavp.dev/particlesystem.html">Read more</a></p>
+<h4><span style="color: #236fa1;">Disintegrating block</span></h4>
+<p>When tasked with creating this game project, we were required to include a destructible object. I wanted to go beyond a simple animation and create something more dynamic. After playtesting games made by second-year students, I saw the potential of shaders and became interested in exploring them. Since our coursework hadn't yet covered GPU communication, getting started was challenging. However, this early experience gave me an advantage later in my education when working with GPU buffers and shader-related coding.</p>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/DisintegratingBlock.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/10/20240321-1433-02.7030368-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="452"></figure></a>
+<figcaption >Disintegrating shader on blocks</figcaption>
+</figure>
+<p> </p>
+<p>To only play the shader when the player collides with the block I set up a buffer to the GPU to enable a variable that starts a timer for running the code. </p>
+<pre class="language-cpp"><code>void DisintegratingBuffer::UpdateShader()
+{
+	D3D11_MAPPED_SUBRESOURCE mappedBuffer = {};
+	Tga::DX11::Context-&gt;Map(myDissolveBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &amp;mappedBuffer);
+	memcpy(mappedBuffer.pData, &amp;myDissolveData, sizeof(DissolveBufferData));
+	Tga::DX11::Context-&gt;Unmap(myDissolveBuffer.Get(), 0);
+
+	Tga::DX11::Context-&gt;PSSetConstantBuffers(9u, 1, myDissolveBuffer.GetAddressOf());
+	myNoiseTexture-&gt;SetAsResourceOnSlot(9);
+}</code></pre>
+<h4><span style="color: #236fa1;">Shader Code</span></h4>
+<p>The function of the disintegrating block was to give it a noise texture that has a cut-off threshold. The threshold variable is changed over time to set the alpha as 0 where for each pixel on the texture that is below the cut-off threshold. </p>
+<pre class="language-cpp"><code>float2 modifiedUV = input.texCoord0;
+modifiedUV.x *= uvScale;
+modifiedUV.y *= uvScale;
+
+float noise = noiseTexture.Sample(defaultSampler, modifiedUV).r;
+
+noise -= timeElapsed / maxTime;
+
+float3 colour = radiance;
+if (noise &lt; minAlphaTreshold)
+{
+    discard;
+    result.color.rgba = (0.0f, 0.0f, 0.0f, 0.0f);
+    return result;
+}
+
+result.color.rgb = (float3) colour;
+result.color.a = albedo.a;
+return result;</code></pre>
+<h4><span style="color: #236fa1;">Threading</span></h4>
+<p>During one of our courses we learned about threading and double buffered rendering and at the start of the project I created the base of the project and included the threading. This was also made easier at the start as none of the others I worked with needed to adjust their type of coding for this reason. <br><br><span style="color: #236fa1;">Main thread</span></p>
+<pre class="language-cpp"><code>// Logic Thread
+std::thread logicThread(&amp;CallUpdate, &amp;gameWorld);
+// Main loop
+while (engine.BeginFrame())
+{
+    if (introVideo.IsPlaying() == true)
+    {
+         introVideo.Update(engine.GetDeltaTime());
+         introVideo.Render(engine);
+    }
+    else
+    {
+         syncDone = true;
+         gameWorld.Render();
+         while (!gameReady); // Wait for UpdateLoop
+    }
+
+    engine.EndFrame();
+    input.Update();
+    controllerInput.Refresh();
+    gameReady = false;
+
+    if (gameWorld.GameShouldQuit())
+    {
+         break;
+    }
+}
+
+if (logicThread.joinable() == true)
+{
+    logicThread.join();
+}</code></pre>
+<p><span style="color: #236fa1;">Logic thread</span></p>
+<pre class="language-cpp"><code>void CallUpdate(GameWorld* aGameWorld)
+{
+	Tga::Engine&amp; engine = *Tga::Engine::GetInstance();
+	while (globalMessage != WM_NCDESTROY)
+	{
+		if (syncDone == true)
+		{
+			syncDone = false;
+			if (aGameWorld-&gt;GetSoundEffectsOn())
+			{
+				Windbox::UpdateAudio(engine.GetDeltaTime());
+			}
+			aGameWorld-&gt;Update(engine.GetDeltaTime());
+			gameReady = true;
+		}
+
+		if (aGameWorld-&gt;GameShouldQuit())
+		{
+			break;
+		}
+	}
+}</code></pre>
+<p>The double buffers we used was set up for the reason to not have any threading issues with accessing the same data from different threads.</p>
+<pre class="language-cpp"><code>struct RenderData3DSprite
+{
+	Tga::SpriteSharedData* sharedData;
+	Tga::Sprite3DInstanceData* spriteInstance;
+};
+
+struct RenderData3D
+{
+	const Tga::ModelInstance* modelInstance = 0;
+};
+
+struct AnimatedRenderData3D
+{
+	const Tga::AnimatedModelInstance* animatedModelInstance;
+};
+
+struct BatchedSpriteRenderData
+{
+	Tga::SpriteSharedData sharedData;
+	std::vector&lt;Tga::Sprite3DInstanceData&gt; instances;
+};</code></pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Spores of Malice</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/spores-of-malice.html"/>
+        <id>https://gustavp.dev/spores-of-malice.html</id>
+        <media:content url="https://gustavp.dev/media/posts/9/SporesofmaliceGameplay.gif" medium="image" />
+
+        <updated>2025-02-15T15:30:48+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/9/SporesofmaliceGameplay.gif" alt="" />
+                    Spores of Malice was made in C++ and is a bullet hell game, inspired by Enter the Gungeon. Trailer: Spores&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/9/SporesofmaliceGameplay.gif" class="type:primaryImage" alt="" /></p>
+                <p>Spores of Malice was made in C++ and is a bullet hell game, inspired by Enter the Gungeon.</p>
+<p><span style="color: #236fa1;"><a href="https://www.youtube.com/watch?v=JWn_G3hDBeY" target="_blank" rel="noopener noreferrer" style="color: #236fa1;">Trailer: Spores of Malice</a></span></p>
+<h5><span style="color: #3598db;">Details</span></h5>
+<ul>
+<li>Genre: Top Down Adventure, Bullet hell</li>
+<li>Engine: The Game Engine</li>
+<li>Duration: 7 weeks at 50%</li>
+<li>Team: 6 programmers, 4 artists, 3 level design</li>
+</ul>
+<h6><span style="color: #3598db;">My contributions for this project:</span></h6>
+<ul>
+<li>Dialog system</li>
+<li>Destructible objects</li>
+<li>Double buffered rendering</li>
+<li>Particle system in both 2D and 3D</li>
+<li>Scripted boss event</li>
+</ul>
+<h4><span style="color: #236fa1;">Dialog System</span></h4>
+<p class="align-left">This dialog system works together with Unity. It was created for our level designers to be able to place box colliders in Unity to trigger the corresponding text. The text is read from a .json file </p>
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/9/Sporesofmalicedialogsystem-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure>
+<figcaption >Dialog triggered when entering the room</figcaption>
+</figure>
+<p>Loading the text from .json file was done by code below.</p>
+<pre class="language-cpp"><code>if (std::filesystem::exists(aFilePath))
+{
+	nlohmann::json jsonData = nlohmann::json::parse(file);
+	file.close();
+	std::vector&lt;std::string&gt; tempStringHolder;
+	for (int i = 0; i &lt; jsonData["Text"].size(); i++)
+	{
+		for (int j = 0; j &lt; jsonData["Text"][i]["value"].size(); j++)
+		{
+			tempStringHolder.push_back(jsonData["Text"][i]["value"][j]);
+		}
+		myMap[jsonData["Text"][i]["id"]] = tempStringHolder;
+		tempStringHolder = {};
+	}
+}</code></pre>
+<p>Text example of the .json file</p>
+<pre class="language-json"><code>"Text": [
+  {
+    "id": 0,
+    "value": [
+      "Bob: Ohh my shroom, why can't I move?!",
+      "Nettlerot: You can't move because I am in control.\nNow, how did these controls work?",
+      "Nettlerot: aah yes, just like a keyboard and mouse,\nthe WASD keys move this shroom around."
+    ]
+  },
+  {
+    "id": 1,
+    "value": [
+      "Bob: BENNY HELP ME! I am being\ncontrolled by an evil gun demon!",
+      "Benny: Bob is that you? My senses\nreally aren't what they used to be.",
+      "Nettlerot: Ahh Benny, the first in a long line of victims before my power.",
+      "Nettlerot: Now how can I make this\nshroom guy pull my trigger...?",
+      "Nettlerot: Of course, I use the mouse to aim him,\n then the LEFT MOUSE BUTTON to fire!",
+      "Nettlerot: I need to thank the gamer\ndemons for this later, HA HA HA HA"
+    ]
+  },</code></pre>
+<h4><span style="color: #236fa1;">Destructible objects</span></h4>
+<p class="align-left">To create more fun interactions I added particle effects on the destructible objects.<br>I find the destructible objects to be the ideal amount of interference. In tense situations, it's hardly noticeable, but when I intentionally interact with it, it feels deeply satisfying.</p>
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/9/Sporesofmalicedestroyableobjects-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure>
+<figcaption >Displaying destructible objects</figcaption>
+</figure>
+<p>Update loop for Destructible objects</p>
+<pre class="language-cpp"><code>bool Destructible::Update(float aDeltaTime, Tga::Vector3f aPlayerPos, BoxCollider aPlayerCollider)
+{
+	float distToPlayer = (aPlayerPos - myTransform.GetPosition()).LengthSqr();
+	if (distToPlayer &gt; myRadiusSquared)
+	{
+		return false;
+	}
+
+	if (myIsDead == true)
+	{
+		myDeadTimer += aDeltaTime;
+	}
+
+	if(myBoxCollider.CheckCollision(aPlayerCollider) == true)
+	{
+		for (int i = 0; i &lt; myAllParticleSystems.size(); i++)
+		{
+			myAllParticleSystems[i]-&gt;Play(true);
+			if (myIsDead == false)
+			{
+				PlayDestroySound();
+			}
+		}
+		myIsDead = true;
+	}
+
+	if (CheckBulletCollisions() == true)
+	{
+		myIsDead = true;
+		return false;
+	}
+	return true;
+}</code></pre>
+<h4><span style="color: #236fa1;">Double buffered rendering</span></h4>
+<p>Main loop and logic thread creation.</p>
+<pre class="language-cpp"><code>// Logic Thread
+std::thread logicThread(&amp;CallUpdate, &amp;gameWorld);
+// Main loop
+while (engine.BeginFrame())
+{
+	syncDone = true;
+	gameWorld.Render();
+
+	while (!gameReady); // Wait for UpdateLoop
+
+	engine.EndFrame();
+	input.Update();
+	controllerInput.Refresh();
+
+	gameReady = false;
+	if (gameWorld.GameShouldQuit())
+	{
+		break;
+	}
+}
+
+logicThread.join();</code></pre>
+<p>Logic thread loop</p>
+<pre class="language-cpp"><code>void CallUpdate(GameWorld* aGameWorld)
+{
+	Tga::Engine&amp; engine = *Tga::Engine::GetInstance();
+	while (globalMessage != WM_NCDESTROY)
+	{
+		if (syncDone == true)
+		{
+			syncDone = false;
+			DoControllerInput();
+			aGameWorld-&gt;Update(engine.GetDeltaTime());
+			gameReady = true;
+		}
+		if (aGameWorld-&gt;GameShouldQuit())
+		{
+			break;
+		}
+	}
+}</code></pre>
+<h4><span style="color: #236fa1;">Particle System</span></h4>
+<p class="align-left">I created a particle system for the previous project and wanted to keep developing the tool as it created a better mood for the game. The system was previously only 2D but for this game I developed it to become both 2D and 3D. </p>
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  style="outline: 3px solid rgba(var(--color-primary-rgb), 0.55) !important;" src="https://gustavp.dev/media/posts/9/SporesofmaliceParticleSystem-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="489"></figure>
+<figcaption >Using 5 combined particle systems to create falling leaves</figcaption>
+</figure>
+<p class="align-left">The particle system is something I have been working on during most of the game projects at school and is something I am very proud of.</p>
+<p>To get a more in depth explanation about the particle system click the link below.<br><a href="https://gustavp.dev/particlesystem.html">Read more</a></p>
+<h4><span style="color: #236fa1;">Scripted boss event</span></h4>
+<p class="align-left">I created a simple scripted event to distinguish boss fights from normal enemy fights. When entering a boss room the moment is locked and camera pans to the boss that falls down from the sky. </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://gustavp.dev/media/posts/9/SporesofmaliceBossEvet-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Order of the Roses</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/order-of-the-roses.html"/>
+        <id>https://gustavp.dev/order-of-the-roses.html</id>
+        <media:content url="https://gustavp.dev/media/posts/8/MomentsDesktopclipfromFeb172025-ezgif.com-video-to-gif-converter-2.gif" medium="image" />
+
+        <updated>2025-02-15T15:30:16+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/8/MomentsDesktopclipfromFeb172025-ezgif.com-video-to-gif-converter-2.gif" alt="" />
+                    SPITE: Order of the Roses was made in C++ using our own engine called Dream Engine. Dream Engine uses DX11&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/8/MomentsDesktopclipfromFeb172025-ezgif.com-video-to-gif-converter-2.gif" class="type:primaryImage" alt="" /></p>
+                <p>SPITE: Order of the Roses was made in C++ using our own engine called Dream Engine. Dream Engine uses DX11 and was made by myself and my team. Dream Engine is based on the engine The Game Engine. The Game Engine was created by the teachers of The Game Assembly.</p>
+<p><a href="https://felipefleming.itch.io/order-of-the-roses" target="_blank" rel="noopener noreferrer">Itch.io: Order of the Roses</a></p>
+<h5><span style="color: #3598db;">Details</span></h5>
+<ul>
+<li>Genre: Top down APRG</li>
+<li>Engine: Dream Engine</li>
+<li>Duration: 10 weeks at 50%</li>
+<li>Team: 6 programmers, 4 artists, 2 level design, 2 procedural artists</li>
+</ul>
+<h6><span style="color: #3598db;">My contributions for this project:</span></h6>
+<ul>
+<li>VFX</li>
+<li>Post processing</li>
+<li>Multi-threaded model loading</li>
+<li>Particle system</li>
+<li>Model culling</li>
+</ul>
+<h4><span style="color: #236fa1;">VFX</span></h4>
+<p>The majority of this project I worked on VFX. I started by creating a tool for myself and for the other programmers to be able to import pixel shaders from the Visual Studio tool "Shader Designer". This was in cooperation with our procedural artists as they wanted to have a visual graph system to create pixel shaders for our VFX. </p>
+<p>To be able to import the pixel shaders without creating too much more work for the programmers I had to create a tool that sent the correct data to the shaders without the need to modify the shader itself.</p>
+<div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/FirstVFXmp4.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/8/20241015-1443-40.4376970-ezgif.com-video-to-gif-converter.gif" alt="One of the earliest VFX in our game and engine" width="600" height="440"></figure> </a>
+<figcaption >One of the earliest VFX in our engine.</figcaption>
+</figure>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/OrderoftheRosesgameplaymp4.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/8/OrderoftheRosesgameplaygif.gif" alt="" width="600" height="443"></figure> </a>
+<figcaption >Some of the VFX from boss fight</figcaption>
+</figure>
+</div>
+<p>To read more about the shader importer click the link below.<br><span style="color: #236fa1;"><strong><a href="https://gustavp.dev/shader-importer.html" style="color: #236fa1;">Shader Importer</a></strong></span></p>
+<h4><span style="color: #236fa1;">Post processing</span></h4>
+<p>I created a few post processing effects but the one I want to highlight is the vignette effect. It was a requirement for our project and an easy effect to create. Despite it being easy to create it has a big impact on the feeling of the game. </p>
+<p>I also gave the option to modify the amount of vignette to our artists.</p>
+<p> </p>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/Vignettemp4.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/8/20241002-1539-46.9359936-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="417"></figure></a>
+<figcaption >Vignette adjustments with Dear Imgui</figcaption>
+</figure>
+<h4><span style="color: #236fa1;">Multi-threaded model loading</span></h4>
+<p>To achieve a faster loading of our levels I parallelized the model loading over multiple threads. I set the amount of threads to four and wrote code to split the work evenly across the threads. </p>
+<pre class="language-cpp"><code>void RunThreadsForModelLoading(LevelData&amp; aLevelData,
+	std::vector&lt;std::shared_ptr&lt;Setdressing&gt;&gt;* someSetdressingObjects,
+	std::vector&lt;int&gt; someTaggedID, int aSplitAmount, std::string aTagName)
+{
+	if(aSplitAmount == 0)
+	{
+		LoadModels(aLevelData, someSetdressingObjects, someTaggedID, 0, static_cast&lt;int&gt;(someTaggedID.size()-1), aTagName);
+	}
+	else
+	{
+		std::thread modelLoadingThread1(&amp;LoadModels, aLevelData, someSetdressingObjects, someTaggedID, 0, aSplitAmount, aTagName);
+		std::thread modelLoadingThread2(&amp;LoadModels, aLevelData, someSetdressingObjects, someTaggedID, aSplitAmount + 1, aSplitAmount * 2, aTagName);
+		std::thread modelLoadingThread3(&amp;LoadModels, aLevelData, someSetdressingObjects, someTaggedID, (aSplitAmount * 2) + 1, aSplitAmount * 3, aTagName);
+		std::thread modelLoadingThread4(&amp;LoadModels, aLevelData, someSetdressingObjects, someTaggedID, (aSplitAmount * 3) + 1, static_cast&lt;int&gt;(someTaggedID.size() - 1), aTagName);
+
+		while(!modelLoadingThread1.joinable()) {}
+		modelLoadingThread1.join();
+		while(!modelLoadingThread2.joinable()) {}
+		modelLoadingThread2.join();
+		while(!modelLoadingThread3.joinable()) {}
+		modelLoadingThread3.join();
+		while(!modelLoadingThread4.joinable()) {}
+		modelLoadingThread4.join();
+	}
+}</code></pre>
+<h4><span style="color: #236fa1;">Particle system</span></h4>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/ParticleSystemOrderOfTheRoses.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/8/20241204-1559-53.4662443-ezgif.com-video-to-gif-converter-1.gif" alt="" width="600" height="521"></figure></a>
+<figcaption >Floating damage numbers and blood splats shown when enemy is hit</figcaption>
+</figure>
+<p>The particle system used is the same particle system I have worked on and used during the last few game projects in our school. </p>
+<p><a href="https://gustavp.dev/particlesystem.html">Read more</a></p>
+<h4><span style="color: #236fa1;">Model culling</span></h4>
+<p>The model culling was created as a way to increase our performance. We had quite large levels and our group always strive to be able to play the full experience in 60 fps with all of our debugging tools.</p>
+<div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/FirstCullingmp4.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/8/20241024-1503-39.3352691-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure> </a>
+<figcaption >The first iteration of my model culling</figcaption>
+</figure>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/Culling Order of the roses2.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/8/CullingOrderoftheroses2-2.gif" alt="" width="800" height="450"></figure> </a>
+<figcaption >Culling shown with camera zoomed out</figcaption>
+</figure>
+</div>
+<p>The code below is the code used for the culling. The code is not perfect but was enough for our cause and did not need more iterations.</p>
+<pre class="language-cpp"><code>bool ObjectLoader::Culling(DE::Vector3f aModelPos)
+{
+	float modelLength;
+	DE::Vector3f cullingOffset = { -850.0f , 0, -942.0f };
+	DE::Vector3f playerPos = myPlayer-&gt;GetTransform()-&gt;GetPosition();
+	playerPos.y = aModelPos.y;
+	playerPos += cullingOffset;
+	modelLength = (aModelPos - playerPos).LengthSqr();
+
+	if (modelLength &lt;= myCullingRange * myCullingRange)
+	{
+		return true;
+	}
+	return false;
+}</code></pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Particle system</title>
+        <author>
+            <name>Gustav Pettersson</name>
+        </author>
+        <link href="https://gustavp.dev/particlesystem.html"/>
+        <id>https://gustavp.dev/particlesystem.html</id>
+        <media:content url="https://gustavp.dev/media/posts/7/CinematicParticleEffect.gif" medium="image" />
+
+        <updated>2025-02-15T13:56:38+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://gustavp.dev/media/posts/7/CinematicParticleEffect.gif" alt="" />
+                    Editor The editor is made using Dear ImGui. The editor is being worked on pretty much all the time, as&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://gustavp.dev/media/posts/7/CinematicParticleEffect.gif" class="type:primaryImage" alt="" /></p>
+                <h4><span style="color: #236fa1;">Editor</span></h4>
+<figure class="post__image post__image--right"><img loading="lazy"  src="https://gustavp.dev/media/posts/7/ParticleSystemEditoer.PNG" alt="" width="371" height="632" sizes="(min-width: 37.5em) 1600px, 80vw" srcset="https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-xs.webp 384w ,https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-sm.webp 600w ,https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-md.webp 768w ,https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-lg.webp 1200w ,https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-xl.webp 1600w"></figure>
+<p>The editor is made using Dear ImGui.<br>The editor is being worked on pretty much all the time, as I am working to add new functions to the system in collaboration with our procedural artists.</p>
+<p>Some features from the editor are:</p>
+<ul>
+<li>Change color of the particles</li>
+<li>Change spawnrate</li>
+<li>Make the particles spawn within a circle or square</li>
+<li>Add force/wind to particles</li>
+<li>Multiple bools for different interactions such as allowing movement, rotation, shrinking, growing, fading and more. </li>
+<li>Loading particle systems with all parameters</li>
+<li>Loading sprites</li>
+<li>Saving all parameters into a .json file</li>
+</ul>
+<div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/ParticleSystemColorChange.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/7/DESKTOPCAPTURE__2025-02-16__19-27-22-ezgif.com-video-to-gif-converter-2.gif" alt="One of the earliest VFX in our game and engine" width="800" height="587"></figure> </a>
+<figcaption >Change the color of particles</figcaption>
+</figure>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/ParticleSystemSpawnrate.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/7/DESKTOPCAPTURE__2025-02-16__19-27-22-ezgif.com-video-to-gif-converter-1-2.gif" alt="" width="800" height="591"></figure> </a>
+<figcaption >Change the spawn time of particles</figcaption>
+</figure>
+</div>
+<div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/ParticleSystemForceWind.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/7/DESKTOPCAPTURE__2025-02-16__19-27-22-ezgif.com-video-to-gif-converter-2-2.gif" alt="One of the earliest VFX in our game and engine" width="800" height="587"></figure> </a>
+<figcaption >Change the force/wind</figcaption>
+</figure>
+<figure class="post__image align-center" ><a href="https://gustavp.dev/media/files/5ParticleSystemsMp4.mp4" target="_blank" rel="noopener noreferrer"> <figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/7/5ParticleSystems.gif" alt="" width="800" height="600"></figure> </a>
+<figcaption >5 particle systems running at the same time</figcaption>
+</figure>
+</div>
+<p>The particle system can spawn particles on a trigger as shown below. </p>
+<p><a href="https://gustavp.dev/media/files/ParticleSystemEnemiesExplodingMp4.mp4" target="_blank" rel="noopener noreferrer">
+<figure class="post__image align-center" ><figure class="post__image"><img loading="lazy"  src="https://gustavp.dev/media/posts/7/ParticleSystemEnemiesExplodingGif.gif" alt="" width="800" height="519"></figure>
+<figcaption >Particle system triggered when flying enemies are destroyed</figcaption>
+</figure>
+</a></p>
+<h4><span style="color: #236fa1;">Particle manager</span></h4>
+<p>The particle manager exists for the duration of the application runtime.</p>
+<pre class="language-cpp"><code>class ParticleManager
+{
+public:
+	ParticleManager();
+	~ParticleManager();
+	void Add2D(ParticleSystem* aParicleSystem);
+	void AddDebug2D(ParticleSystem aParicleSystem);
+	void Add3D(ParticleSystem3D* aParicleSystem);
+	void AddDebug3D(ParticleSystem3D aParicleSystem);
+	void Clear();
+	void Render(DreamEngine::SpriteDrawer&amp; aSpriteDrawer);
+	void RenderToGBuffer(DreamEngine::SpriteDrawer&amp; aSpriteDrawer);
+	void Update(float aDeltaTime);
+	void SetCameraTransform(DreamEngine::Transform* aCameraTransform);
+	void SetActionCamera(bool aActionCamera);
+	void SetWorldScale(float aScale);
+	void SetPlayerPosition(DE::Vector3f aPlayerPos);
+
+#ifndef _RETAIL
+	void ImGui2DDebugMenu();
+	void ImGui3DDebugMenu();
+#endif // !_RETAIL
+private:
+	std::vector&lt;ParticleSystem*&gt; my2DParticleSystems;
+	std::vector&lt;ParticleSystem&gt; my2DDebugParticleSystems;
+	std::vector&lt;ParticleSystem3D*&gt; my3DParticleSystems;
+	std::vector&lt;ParticleSystem3D&gt; my3DDebugParticleSystems;
+	std::array&lt;char[50], 10&gt; myParticleSystemNames;
+	float myWorldScale;
+	int myCurrentParticleSystem;
+	int mySizeOf2DParticleSystems;
+	int mySizeOf3DParticleSystems;
+	bool myPaticle2DDebugMode;
+	bool myPaticle3DDebugMode;
+	bool myActionCamera;
+	bool myShouldResetParticleSystem;
+	DreamEngine::Transform* myCameraTransform;
+	DE::Vector3f myPlayerPosition;
+};</code></pre>
+<h4><span style="color: #236fa1;">Particle system</span></h4>
+<p>The particle system holds all the particles and all of the debug data connected to the editor.</p>
+<pre class="language-cpp"><code>void ParticleSystem3D::Init(int aSize)
+{
+	myParticleAmount = aSize;
+	myTotalTime = 0;
+	for (size_t i = 0; i &lt; myParticleAmount; i++)
+	{
+		Particle3D particle;
+		if (myPosPtr != 0)
+		{
+			particle.Init(*myPosPtr, myParticleStartInstance.myColor, myParticleScale, myParticleStartDecayTime, { (float)myParticlesShouldMove,(float)myParticlesShouldRotate,(float)myParticlesShouldShrink,(float)myParticlesShouldFade }, myParticleDirMin, myParticleDirMax, myCameraTransform, myActionCamera);
+			//particle.SetOrigin(*myPosPtr);
+		}
+		else
+		{
+			particle.Init(myPos, myParticleStartInstance.myColor, myParticleScale, myParticleStartDecayTime, { (float)myParticlesShouldMove,(float)myParticlesShouldRotate,(float)myParticlesShouldShrink,(float)myParticlesShouldFade }, myParticleDirMin, myParticleDirMax, myCameraTransform, myActionCamera);
+			//particle.SetOrigin(myPos);
+		}
+		particle.SetParticleSize(ourParticleData.myTexture-&gt;CalculateTextureSize());
+		particle.SetAlpha(0);
+		particle.SetForce(myForce);
+		myParticles.push_back(particle);
+		myParticleInstances.push_back(particle.GetSpriteInstance());
+	}
+}</code></pre>
+<p>To load a particle system a saved .json file is loaded and puts all the corresponding data into the system and then initializes the particle system.</p>
+<pre class="language-cpp"><code>void ParticleSystem3D::LoadParticleSystem(std::string aParticleSystemPath)
+{
+	myLoadedData = true;
+	std::ifstream file(aParticleSystemPath);
+	if (std::filesystem::exists(aParticleSystemPath))
+	{
+		nlohmann::json jsonData = nlohmann::json::parse(file);
+		file.close();
+
+		if (!jsonData["ParticleAmount"].is_null())
+		{
+			myParticleAmount = jsonData["ParticleAmount"];
+		}
+		if (!jsonData["DecayTime"].is_null())
+		{
+			myParticleStartDecayTime = jsonData["DecayTime"];
+		}
+		if (!jsonData["LifeTime"].is_null())
+		{
+			myLifeTime = jsonData["LifeTime"];
+		}
+
+                ... ("more similar data input")
+
+		for (int i = 0; i &lt; myParticles.size(); i++)
+		{
+			myParticles[i].SetAlpha(0);
+			myParticles[i].SetForce(myForce);
+			myParticleInstances[i] = myParticles[i].GetSpriteInstance();
+		}
+
+		myUvs.clear();
+
+		Init(myParticleAmount);
+	}
+}</code></pre>
+            ]]>
+        </content>
+    </entry>
+</feed>

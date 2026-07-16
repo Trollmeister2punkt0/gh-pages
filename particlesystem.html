@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Particle system - Gustav Pettersson</title><meta name="description" content="Editor The editor is made using Dear ImGui. The editor is being worked on pretty much all the time, as&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://gustavp.dev/media/plugins/syntaxHighlighter/prism-black.css"><link rel="canonical" href="https://gustavp.dev/particlesystem.html"><link rel="alternate" type="application/atom+xml" href="https://gustavp.dev/feed.xml"><link rel="alternate" type="application/json" href="https://gustavp.dev/feed.json"><meta property="og:title" content="Particle system"><meta property="og:image" content="https://gustavp.dev/media/posts/7/CinematicParticleEffect.gif"><meta property="og:image:width" content="800"><meta property="og:image:height" content="456"><meta property="og:site_name" content="Gustav Pettersson"><meta property="og:description" content="Editor The editor is made using Dear ImGui. The editor is being worked on pretty much all the time, as&hellip;"><meta property="og:url" content="https://gustavp.dev/particlesystem.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://gustavp.dev/assets/css/style.css?v=404ad15f94a482fa13b23765bf184808"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://gustavp.dev/particlesystem.html"},"headline":"Particle system","datePublished":"2025-02-15T13:56+01:00","dateModified":"2025-03-17T14:53+01:00","image":{"@type":"ImageObject","url":"https://gustavp.dev/media/posts/7/CinematicParticleEffect.gif","height":456,"width":800},"description":"Editor The editor is made using Dear ImGui. The editor is being worked on pretty much all the time, as&hellip;","author":{"@type":"Person","name":"Gustav Pettersson","url":"https://gustavp.dev/authors/gustav-pettersson/"},"publisher":{"@type":"Organization","name":"Gustav Pettersson"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template lines"><div class="container lines lines--right"><header class="header"><a href="https://gustavp.dev/" class="logo">Gustav Pettersson</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu">Menu</button><ul class="navbar__menu"><li><a href="https://gustavp.dev/" target="_self">Home</a></li><li><a href="https://gustavp.dev/thread-pool-2.html" target="_self">Thread pool</a></li><li><a href="https://gustavp.dev/shader-importer.html" target="_self">Shader Importer</a></li><li class="active"><a href="https://gustavp.dev/particlesystem.html" target="_self">Particle system</a></li><li class="has-submenu"><span class="is-separator" aria-haspopup="true">Game projects</span><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://gustavp.dev/blacksite-deep-horizon-2.html" target="_self">Echoes in the Murk</a></li><li><a href="https://gustavp.dev/blacksite-deep-horizon.html" target="_self">Blacksite: Deep Horizon</a></li><li><a href="https://gustavp.dev/order-of-the-roses.html" target="_self">Order of the Roses</a></li><li><a href="https://gustavp.dev/spores-of-malice.html" target="_self">Spores of Malice</a></li><li><a href="https://gustavp.dev/root-of-evil.html" target="_self">Root of Evil</a></li></ul></li><li><a href="https://gustavp.dev/about-me.html" target="_self">About me</a></li></ul></nav></header><main class="main post"><article class="content"><header class="content__inner content__header"><h1 class="content__title">Particle system</h1></header><figure class="content__featured-image"><div class="content__featured-image__inner is-img-loading"><img src="https://gustavp.dev/media/posts/7/CinematicParticleEffect.gif" loading="eager" height="456" width="800" alt=""></div></figure><div class="content__inner"><div class="content__entry"><h4><span style="color: #236fa1;">Editor</span></h4><figure class="post__image post__image--right"><img loading="lazy" src="https://gustavp.dev/media/posts/7/ParticleSystemEditoer.PNG" alt="" width="371" height="632" sizes="(min-width: 37.5em) 1600px, 80vw" srcset="https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-xs.webp 384w, https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-sm.webp 600w, https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-md.webp 768w, https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-lg.webp 1200w, https://gustavp.dev/media/posts/7/responsive/ParticleSystemEditoer-xl.webp 1600w"></figure><p>The editor is made using Dear ImGui.<br>The editor is being worked on pretty much all the time, as I am working to add new functions to the system in collaboration with our procedural artists.</p><p>Some features from the editor are:</p><ul><li>Change color of the particles</li><li>Change spawnrate</li><li>Make the particles spawn within a circle or square</li><li>Add force/wind to particles</li><li>Multiple bools for different interactions such as allowing movement, rotation, shrinking, growing, fading and more. </li><li>Loading particle systems with all parameters</li><li>Loading sprites</li><li>Saving all parameters into a .json file</li></ul><div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;"><figure class="post__image align-center"><a href="https://gustavp.dev/media/files/ParticleSystemColorChange.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/7/DESKTOPCAPTURE__2025-02-16__19-27-22-ezgif.com-video-to-gif-converter-2.gif" alt="One of the earliest VFX in our game and engine" width="800" height="587"></figure></a><figcaption>Change the color of particles</figcaption></figure><figure class="post__image align-center"><a href="https://gustavp.dev/media/files/ParticleSystemSpawnrate.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/7/DESKTOPCAPTURE__2025-02-16__19-27-22-ezgif.com-video-to-gif-converter-1-2.gif" alt="" width="800" height="591"></figure></a><figcaption>Change the spawn time of particles</figcaption></figure></div><div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;"><figure class="post__image align-center"><a href="https://gustavp.dev/media/files/ParticleSystemForceWind.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/7/DESKTOPCAPTURE__2025-02-16__19-27-22-ezgif.com-video-to-gif-converter-2-2.gif" alt="One of the earliest VFX in our game and engine" width="800" height="587"></figure></a><figcaption>Change the force/wind</figcaption></figure><figure class="post__image align-center"><a href="https://gustavp.dev/media/files/5ParticleSystemsMp4.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/7/5ParticleSystems.gif" alt="" width="800" height="600"></figure></a><figcaption>5 particle systems running at the same time</figcaption></figure></div><p>The particle system can spawn particles on a trigger as shown below. </p><p><a href="https://gustavp.dev/media/files/ParticleSystemEnemiesExplodingMp4.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image align-center"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/7/ParticleSystemEnemiesExplodingGif.gif" alt="" width="800" height="519"></figure><figcaption>Particle system triggered when flying enemies are destroyed</figcaption></figure></a></p><h4><span style="color: #236fa1;">Particle manager</span></h4><p>The particle manager exists for the duration of the application runtime.</p><pre class="language-cpp"><code>class ParticleManager
+{
+public:
+	ParticleManager();
+	~ParticleManager();
+	void Add2D(ParticleSystem* aParicleSystem);
+	void AddDebug2D(ParticleSystem aParicleSystem);
+	void Add3D(ParticleSystem3D* aParicleSystem);
+	void AddDebug3D(ParticleSystem3D aParicleSystem);
+	void Clear();
+	void Render(DreamEngine::SpriteDrawer&amp; aSpriteDrawer);
+	void RenderToGBuffer(DreamEngine::SpriteDrawer&amp; aSpriteDrawer);
+	void Update(float aDeltaTime);
+	void SetCameraTransform(DreamEngine::Transform* aCameraTransform);
+	void SetActionCamera(bool aActionCamera);
+	void SetWorldScale(float aScale);
+	void SetPlayerPosition(DE::Vector3f aPlayerPos);
+
+#ifndef _RETAIL
+	void ImGui2DDebugMenu();
+	void ImGui3DDebugMenu();
+#endif // !_RETAIL
+private:
+	std::vector&lt;ParticleSystem*&gt; my2DParticleSystems;
+	std::vector&lt;ParticleSystem&gt; my2DDebugParticleSystems;
+	std::vector&lt;ParticleSystem3D*&gt; my3DParticleSystems;
+	std::vector&lt;ParticleSystem3D&gt; my3DDebugParticleSystems;
+	std::array&lt;char[50], 10&gt; myParticleSystemNames;
+	float myWorldScale;
+	int myCurrentParticleSystem;
+	int mySizeOf2DParticleSystems;
+	int mySizeOf3DParticleSystems;
+	bool myPaticle2DDebugMode;
+	bool myPaticle3DDebugMode;
+	bool myActionCamera;
+	bool myShouldResetParticleSystem;
+	DreamEngine::Transform* myCameraTransform;
+	DE::Vector3f myPlayerPosition;
+};</code></pre><h4><span style="color: #236fa1;">Particle system</span></h4><p>The particle system holds all the particles and all of the debug data connected to the editor.</p><pre class="language-cpp"><code>void ParticleSystem3D::Init(int aSize)
+{
+	myParticleAmount = aSize;
+	myTotalTime = 0;
+	for (size_t i = 0; i &lt; myParticleAmount; i++)
+	{
+		Particle3D particle;
+		if (myPosPtr != 0)
+		{
+			particle.Init(*myPosPtr, myParticleStartInstance.myColor, myParticleScale, myParticleStartDecayTime, { (float)myParticlesShouldMove,(float)myParticlesShouldRotate,(float)myParticlesShouldShrink,(float)myParticlesShouldFade }, myParticleDirMin, myParticleDirMax, myCameraTransform, myActionCamera);
+			//particle.SetOrigin(*myPosPtr);
+		}
+		else
+		{
+			particle.Init(myPos, myParticleStartInstance.myColor, myParticleScale, myParticleStartDecayTime, { (float)myParticlesShouldMove,(float)myParticlesShouldRotate,(float)myParticlesShouldShrink,(float)myParticlesShouldFade }, myParticleDirMin, myParticleDirMax, myCameraTransform, myActionCamera);
+			//particle.SetOrigin(myPos);
+		}
+		particle.SetParticleSize(ourParticleData.myTexture-&gt;CalculateTextureSize());
+		particle.SetAlpha(0);
+		particle.SetForce(myForce);
+		myParticles.push_back(particle);
+		myParticleInstances.push_back(particle.GetSpriteInstance());
+	}
+}</code></pre><p>To load a particle system a saved .json file is loaded and puts all the corresponding data into the system and then initializes the particle system.</p><pre class="language-cpp"><code>void ParticleSystem3D::LoadParticleSystem(std::string aParticleSystemPath)
+{
+	myLoadedData = true;
+	std::ifstream file(aParticleSystemPath);
+	if (std::filesystem::exists(aParticleSystemPath))
+	{
+		nlohmann::json jsonData = nlohmann::json::parse(file);
+		file.close();
+
+		if (!jsonData["ParticleAmount"].is_null())
+		{
+			myParticleAmount = jsonData["ParticleAmount"];
+		}
+		if (!jsonData["DecayTime"].is_null())
+		{
+			myParticleStartDecayTime = jsonData["DecayTime"];
+		}
+		if (!jsonData["LifeTime"].is_null())
+		{
+			myLifeTime = jsonData["LifeTime"];
+		}
+
+                ... ("more similar data input")
+
+		for (int i = 0; i &lt; myParticles.size(); i++)
+		{
+			myParticles[i].SetAlpha(0);
+			myParticles[i].SetForce(myForce);
+			myParticleInstances[i] = myParticles[i].GetSpriteInstance();
+		}
+
+		myUvs.clear();
+
+		Init(myParticleAmount);
+	}
+}</code></pre></div></div></article></main><footer class="footer"><div class="footer__left"><div class="footer__copy"><p style="text-align: center;"><a href="https://gustavp.dev/about-me" target="_blank" rel="noopener noreferrer">About me</a></p></div></div><button onclick="backToTopFunction()" id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg><use xlink:href="https://gustavp.dev/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = { mobileMenuMode: 'sidebar', animationSpeed: 300, submenuWidth: 'auto', doubleClickTime: 500, mobileMenuExpandableSubmenus: true, relatedContainerForOverlayMenuSelector: '.navbar', };</script><script defer="defer" src="https://gustavp.dev/assets/js/scripts.min.js?v=9c5ab7a87221183f149a42b3cceb7956"></script><script>function publiiDetectLoadedImages () {
+         var images = document.querySelectorAll('img[loading]:not(.is-loaded)');
+         for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+               images[i].classList.add('is-loaded');
+               images[i].parentNode.classList.remove('is-img-loading');
+            } else {
+               images[i].addEventListener('load', function () {
+                  this.classList.add('is-loaded');
+                  this.parentNode.classList.remove('is-img-loading');
+               }, false);
+            }
+         }
+      }
+      publiiDetectLoadedImages();</script><script defer="defer" src="https://gustavp.dev/media/plugins/syntaxHighlighter/prism.js"></script><script src="https://gustavp.dev/media/plugins/pagePrefetching/quicklink.umd.js"></script><script>window.addEventListener('load', () => {
+					quicklink.listen({
+						prerender: true,
+						el: document.querySelector('body'),
+						delay: 0,
+						limit: Infinity,
+						throttle: Infinity,
+						timeout: 2000
+					});
+				});</script></body></html>

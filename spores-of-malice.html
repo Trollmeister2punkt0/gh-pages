@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spores of Malice - Gustav Pettersson</title><meta name="description" content="Spores of Malice was made in C++ and is a bullet hell game, inspired by Enter the Gungeon. Trailer: Spores&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://gustavp.dev/media/plugins/syntaxHighlighter/prism-black.css"><link rel="canonical" href="https://gustavp.dev/spores-of-malice.html"><link rel="alternate" type="application/atom+xml" href="https://gustavp.dev/feed.xml"><link rel="alternate" type="application/json" href="https://gustavp.dev/feed.json"><meta property="og:title" content="Spores of Malice"><meta property="og:image" content="https://gustavp.dev/media/posts/9/SporesofmaliceGameplay.gif"><meta property="og:image:width" content="800"><meta property="og:image:height" content="450"><meta property="og:site_name" content="Gustav Pettersson"><meta property="og:description" content="Spores of Malice was made in C++ and is a bullet hell game, inspired by Enter the Gungeon. Trailer: Spores&hellip;"><meta property="og:url" content="https://gustavp.dev/spores-of-malice.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://gustavp.dev/assets/css/style.css?v=404ad15f94a482fa13b23765bf184808"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://gustavp.dev/spores-of-malice.html"},"headline":"Spores of Malice","datePublished":"2025-02-15T15:30+01:00","dateModified":"2025-04-07T21:14+02:00","image":{"@type":"ImageObject","url":"https://gustavp.dev/media/posts/9/SporesofmaliceGameplay.gif","height":450,"width":800},"description":"Spores of Malice was made in C++ and is a bullet hell game, inspired by Enter the Gungeon. Trailer: Spores&hellip;","author":{"@type":"Person","name":"Gustav Pettersson","url":"https://gustavp.dev/authors/gustav-pettersson/"},"publisher":{"@type":"Organization","name":"Gustav Pettersson"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template lines"><div class="container lines lines--right"><header class="header"><a href="https://gustavp.dev/" class="logo">Gustav Pettersson</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu">Menu</button><ul class="navbar__menu"><li><a href="https://gustavp.dev/" target="_self">Home</a></li><li><a href="https://gustavp.dev/thread-pool-2.html" target="_self">Thread pool</a></li><li><a href="https://gustavp.dev/shader-importer.html" target="_self">Shader Importer</a></li><li><a href="https://gustavp.dev/particlesystem.html" target="_self">Particle system</a></li><li class="active-parent has-submenu"><span class="is-separator" aria-haspopup="true">Game projects</span><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://gustavp.dev/blacksite-deep-horizon-2.html" target="_self">Echoes in the Murk</a></li><li><a href="https://gustavp.dev/blacksite-deep-horizon.html" target="_self">Blacksite: Deep Horizon</a></li><li><a href="https://gustavp.dev/order-of-the-roses.html" target="_self">Order of the Roses</a></li><li class="active"><a href="https://gustavp.dev/spores-of-malice.html" target="_self">Spores of Malice</a></li><li><a href="https://gustavp.dev/root-of-evil.html" target="_self">Root of Evil</a></li></ul></li><li><a href="https://gustavp.dev/about-me.html" target="_self">About me</a></li></ul></nav></header><main class="main post"><article class="content"><header class="content__inner content__header"><h1 class="content__title">Spores of Malice</h1></header><figure class="content__featured-image"><div class="content__featured-image__inner is-img-loading"><img src="https://gustavp.dev/media/posts/9/SporesofmaliceGameplay.gif" loading="eager" height="450" width="800" alt=""></div></figure><div class="content__inner"><div class="content__entry"><p>Spores of Malice was made in C++ and is a bullet hell game, inspired by Enter the Gungeon.</p><p><span style="color: #236fa1;"><a href="https://www.youtube.com/watch?v=JWn_G3hDBeY" target="_blank" rel="noopener noreferrer" style="color: #236fa1;">Trailer: Spores of Malice</a></span></p><h5><span style="color: #3598db;">Details</span></h5><ul><li>Genre: Top Down Adventure, Bullet hell</li><li>Engine: The Game Engine</li><li>Duration: 7 weeks at 50%</li><li>Team: 6 programmers, 4 artists, 3 level design</li></ul><h6><span style="color: #3598db;">My contributions for this project:</span></h6><ul><li>Dialog system</li><li>Destructible objects</li><li>Double buffered rendering</li><li>Particle system in both 2D and 3D</li><li>Scripted boss event</li></ul><h4><span style="color: #236fa1;">Dialog System</span></h4><p class="align-left">This dialog system works together with Unity. It was created for our level designers to be able to place box colliders in Unity to trigger the corresponding text. The text is read from a .json file </p><figure class="post__image align-center"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/9/Sporesofmalicedialogsystem-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure><figcaption>Dialog triggered when entering the room</figcaption></figure><p>Loading the text from .json file was done by code below.</p><pre class="language-cpp"><code>if (std::filesystem::exists(aFilePath))
+{
+	nlohmann::json jsonData = nlohmann::json::parse(file);
+	file.close();
+	std::vector&lt;std::string&gt; tempStringHolder;
+	for (int i = 0; i &lt; jsonData["Text"].size(); i++)
+	{
+		for (int j = 0; j &lt; jsonData["Text"][i]["value"].size(); j++)
+		{
+			tempStringHolder.push_back(jsonData["Text"][i]["value"][j]);
+		}
+		myMap[jsonData["Text"][i]["id"]] = tempStringHolder;
+		tempStringHolder = {};
+	}
+}</code></pre><p>Text example of the .json file</p><pre class="language-json"><code>"Text": [
+  {
+    "id": 0,
+    "value": [
+      "Bob: Ohh my shroom, why can't I move?!",
+      "Nettlerot: You can't move because I am in control.\nNow, how did these controls work?",
+      "Nettlerot: aah yes, just like a keyboard and mouse,\nthe WASD keys move this shroom around."
+    ]
+  },
+  {
+    "id": 1,
+    "value": [
+      "Bob: BENNY HELP ME! I am being\ncontrolled by an evil gun demon!",
+      "Benny: Bob is that you? My senses\nreally aren't what they used to be.",
+      "Nettlerot: Ahh Benny, the first in a long line of victims before my power.",
+      "Nettlerot: Now how can I make this\nshroom guy pull my trigger...?",
+      "Nettlerot: Of course, I use the mouse to aim him,\n then the LEFT MOUSE BUTTON to fire!",
+      "Nettlerot: I need to thank the gamer\ndemons for this later, HA HA HA HA"
+    ]
+  },</code></pre><h4><span style="color: #236fa1;">Destructible objects</span></h4><p class="align-left">To create more fun interactions I added particle effects on the destructible objects.<br>I find the destructible objects to be the ideal amount of interference. In tense situations, it's hardly noticeable, but when I intentionally interact with it, it feels deeply satisfying.</p><figure class="post__image align-center"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/9/Sporesofmalicedestroyableobjects-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure><figcaption>Displaying destructible objects</figcaption></figure><p>Update loop for Destructible objects</p><pre class="language-cpp"><code>bool Destructible::Update(float aDeltaTime, Tga::Vector3f aPlayerPos, BoxCollider aPlayerCollider)
+{
+	float distToPlayer = (aPlayerPos - myTransform.GetPosition()).LengthSqr();
+	if (distToPlayer &gt; myRadiusSquared)
+	{
+		return false;
+	}
+
+	if (myIsDead == true)
+	{
+		myDeadTimer += aDeltaTime;
+	}
+
+	if(myBoxCollider.CheckCollision(aPlayerCollider) == true)
+	{
+		for (int i = 0; i &lt; myAllParticleSystems.size(); i++)
+		{
+			myAllParticleSystems[i]-&gt;Play(true);
+			if (myIsDead == false)
+			{
+				PlayDestroySound();
+			}
+		}
+		myIsDead = true;
+	}
+
+	if (CheckBulletCollisions() == true)
+	{
+		myIsDead = true;
+		return false;
+	}
+	return true;
+}</code></pre><h4><span style="color: #236fa1;">Double buffered rendering</span></h4><p>Main loop and logic thread creation.</p><pre class="language-cpp"><code>// Logic Thread
+std::thread logicThread(&amp;CallUpdate, &amp;gameWorld);
+// Main loop
+while (engine.BeginFrame())
+{
+	syncDone = true;
+	gameWorld.Render();
+
+	while (!gameReady); // Wait for UpdateLoop
+
+	engine.EndFrame();
+	input.Update();
+	controllerInput.Refresh();
+
+	gameReady = false;
+	if (gameWorld.GameShouldQuit())
+	{
+		break;
+	}
+}
+
+logicThread.join();</code></pre><p>Logic thread loop</p><pre class="language-cpp"><code>void CallUpdate(GameWorld* aGameWorld)
+{
+	Tga::Engine&amp; engine = *Tga::Engine::GetInstance();
+	while (globalMessage != WM_NCDESTROY)
+	{
+		if (syncDone == true)
+		{
+			syncDone = false;
+			DoControllerInput();
+			aGameWorld-&gt;Update(engine.GetDeltaTime());
+			gameReady = true;
+		}
+		if (aGameWorld-&gt;GameShouldQuit())
+		{
+			break;
+		}
+	}
+}</code></pre><h4><span style="color: #236fa1;">Particle System</span></h4><p class="align-left">I created a particle system for the previous project and wanted to keep developing the tool as it created a better mood for the game. The system was previously only 2D but for this game I developed it to become both 2D and 3D. </p><figure class="post__image align-center"><figure class="post__image"><img loading="lazy" style="outline: 3px solid rgba(var(--color-primary-rgb), 0.55) !important;" src="https://gustavp.dev/media/posts/9/SporesofmaliceParticleSystem-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="489"></figure><figcaption>Using 5 combined particle systems to create falling leaves</figcaption></figure><p class="align-left">The particle system is something I have been working on during most of the game projects at school and is something I am very proud of.</p><p>To get a more in depth explanation about the particle system click the link below.<br><a href="https://gustavp.dev/particlesystem.html">Read more</a></p><h4><span style="color: #236fa1;">Scripted boss event</span></h4><p class="align-left">I created a simple scripted event to distinguish boss fights from normal enemy fights. When entering a boss room the moment is locked and camera pans to the boss that falls down from the sky. </p><figure class="post__image align-center"><img loading="lazy" src="https://gustavp.dev/media/posts/9/SporesofmaliceBossEvet-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="450"></figure></div></div></article></main><footer class="footer"><div class="footer__left"><div class="footer__copy"><p style="text-align: center;"><a href="https://gustavp.dev/about-me" target="_blank" rel="noopener noreferrer">About me</a></p></div></div><button onclick="backToTopFunction()" id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg><use xlink:href="https://gustavp.dev/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = { mobileMenuMode: 'sidebar', animationSpeed: 300, submenuWidth: 'auto', doubleClickTime: 500, mobileMenuExpandableSubmenus: true, relatedContainerForOverlayMenuSelector: '.navbar', };</script><script defer="defer" src="https://gustavp.dev/assets/js/scripts.min.js?v=9c5ab7a87221183f149a42b3cceb7956"></script><script>function publiiDetectLoadedImages () {
+         var images = document.querySelectorAll('img[loading]:not(.is-loaded)');
+         for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+               images[i].classList.add('is-loaded');
+               images[i].parentNode.classList.remove('is-img-loading');
+            } else {
+               images[i].addEventListener('load', function () {
+                  this.classList.add('is-loaded');
+                  this.parentNode.classList.remove('is-img-loading');
+               }, false);
+            }
+         }
+      }
+      publiiDetectLoadedImages();</script><script defer="defer" src="https://gustavp.dev/media/plugins/syntaxHighlighter/prism.js"></script><script src="https://gustavp.dev/media/plugins/pagePrefetching/quicklink.umd.js"></script><script>window.addEventListener('load', () => {
+					quicklink.listen({
+						prerender: true,
+						el: document.querySelector('body'),
+						delay: 0,
+						limit: Infinity,
+						throttle: Infinity,
+						timeout: 2000
+					});
+				});</script></body></html>

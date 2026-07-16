@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Root of Evil - Gustav Pettersson</title><meta name="description" content="Root of Evil was made in C++ using an engine called The Game Engine, provided to us by The Game&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://gustavp.dev/media/plugins/syntaxHighlighter/prism-black.css"><link rel="canonical" href="https://gustavp.dev/root-of-evil.html"><link rel="alternate" type="application/atom+xml" href="https://gustavp.dev/feed.xml"><link rel="alternate" type="application/json" href="https://gustavp.dev/feed.json"><meta property="og:title" content="Root of Evil"><meta property="og:image" content="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__13-06-56_trim-ezgif.com-optimize.gif"><meta property="og:image:width" content="800"><meta property="og:image:height" content="450"><meta property="og:site_name" content="Gustav Pettersson"><meta property="og:description" content="Root of Evil was made in C++ using an engine called The Game Engine, provided to us by The Game&hellip;"><meta property="og:url" content="https://gustavp.dev/root-of-evil.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://gustavp.dev/assets/css/style.css?v=404ad15f94a482fa13b23765bf184808"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://gustavp.dev/root-of-evil.html"},"headline":"Root of Evil","datePublished":"2025-02-15T15:31+01:00","dateModified":"2025-04-07T21:14+02:00","image":{"@type":"ImageObject","url":"https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__13-06-56_trim-ezgif.com-optimize.gif","height":450,"width":800},"description":"Root of Evil was made in C++ using an engine called The Game Engine, provided to us by The Game&hellip;","author":{"@type":"Person","name":"Gustav Pettersson","url":"https://gustavp.dev/authors/gustav-pettersson/"},"publisher":{"@type":"Organization","name":"Gustav Pettersson"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template lines"><div class="container lines lines--right"><header class="header"><a href="https://gustavp.dev/" class="logo">Gustav Pettersson</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu">Menu</button><ul class="navbar__menu"><li><a href="https://gustavp.dev/" target="_self">Home</a></li><li><a href="https://gustavp.dev/thread-pool-2.html" target="_self">Thread pool</a></li><li><a href="https://gustavp.dev/shader-importer.html" target="_self">Shader Importer</a></li><li><a href="https://gustavp.dev/particlesystem.html" target="_self">Particle system</a></li><li class="active-parent has-submenu"><span class="is-separator" aria-haspopup="true">Game projects</span><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://gustavp.dev/blacksite-deep-horizon-2.html" target="_self">Echoes in the Murk</a></li><li><a href="https://gustavp.dev/blacksite-deep-horizon.html" target="_self">Blacksite: Deep Horizon</a></li><li><a href="https://gustavp.dev/order-of-the-roses.html" target="_self">Order of the Roses</a></li><li><a href="https://gustavp.dev/spores-of-malice.html" target="_self">Spores of Malice</a></li><li class="active"><a href="https://gustavp.dev/root-of-evil.html" target="_self">Root of Evil</a></li></ul></li><li><a href="https://gustavp.dev/about-me.html" target="_self">About me</a></li></ul></nav></header><main class="main post"><article class="content"><header class="content__inner content__header"><h1 class="content__title">Root of Evil</h1></header><figure class="content__featured-image"><div class="content__featured-image__inner is-img-loading"><img src="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__13-06-56_trim-ezgif.com-optimize.gif" loading="eager" height="450" width="800" alt=""></div></figure><div class="content__inner"><div class="content__entry"><p class="align-left">Root of Evil was made in C++ using an engine called The Game Engine, provided to us by The Game Assembly. The Game Engine uses DX11.</p><p><a href="https://phicko.itch.io/root-of-evil" target="_blank" rel="noopener noreferrer">Itch.io: Root of Evil</a></p><h5><span style="color: #3598db;">Details</span></h5><ul><li>Genre: 2.5D Platformer</li><li>Engine: The Game Engine</li><li>Duration: 12 weeks at 50%</li><li>Team: 6 programmers, 4 artists, 3 level design, 3 procedural artists</li></ul><h6><span style="color: #3598db;">My contributions for this project:</span></h6><ul><li>Particle system</li><li>Disintegrating block</li><li>Separate threading for Update and Render loops with double buffers</li></ul><h4><span style="color: #236fa1;">Particle System</span></h4><p>I created a particle system for this project to involve our artists much more in the visual appeal for our game. As The Game Engine we used were limited in its capabilities I wanted to add another element to our game that created a more appealing setting to be immersed in.</p><figure class="post__image align-center"><img loading="lazy" src="https://gustavp.dev/media/posts/10/DESKTOPCAPTURE__2025-02-16__11-25-04-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="434"></figure><p>The particle system is something I have been working on during most of the game projects at school and is something I am very proud of.</p><p>To get a more in depth explanation of the particle system click the link below.<br><a href="https://gustavp.dev/particlesystem.html">Read more</a></p><h4><span style="color: #236fa1;">Disintegrating block</span></h4><p>When tasked with creating this game project, we were required to include a destructible object. I wanted to go beyond a simple animation and create something more dynamic. After playtesting games made by second-year students, I saw the potential of shaders and became interested in exploring them. Since our coursework hadn't yet covered GPU communication, getting started was challenging. However, this early experience gave me an advantage later in my education when working with GPU buffers and shader-related coding.</p><figure class="post__image align-center"><a href="https://gustavp.dev/media/files/DisintegratingBlock.mp4" target="_blank" rel="noopener noreferrer"><figure class="post__image"><img loading="lazy" src="https://gustavp.dev/media/posts/10/20240321-1433-02.7030368-ezgif.com-video-to-gif-converter.gif" alt="" width="800" height="452"></figure></a><figcaption>Disintegrating shader on blocks</figcaption></figure><p> </p><p>To only play the shader when the player collides with the block I set up a buffer to the GPU to enable a variable that starts a timer for running the code. </p><pre class="language-cpp"><code>void DisintegratingBuffer::UpdateShader()
+{
+	D3D11_MAPPED_SUBRESOURCE mappedBuffer = {};
+	Tga::DX11::Context-&gt;Map(myDissolveBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &amp;mappedBuffer);
+	memcpy(mappedBuffer.pData, &amp;myDissolveData, sizeof(DissolveBufferData));
+	Tga::DX11::Context-&gt;Unmap(myDissolveBuffer.Get(), 0);
+
+	Tga::DX11::Context-&gt;PSSetConstantBuffers(9u, 1, myDissolveBuffer.GetAddressOf());
+	myNoiseTexture-&gt;SetAsResourceOnSlot(9);
+}</code></pre><h4><span style="color: #236fa1;">Shader Code</span></h4><p>The function of the disintegrating block was to give it a noise texture that has a cut-off threshold. The threshold variable is changed over time to set the alpha as 0 where for each pixel on the texture that is below the cut-off threshold. </p><pre class="language-cpp"><code>float2 modifiedUV = input.texCoord0;
+modifiedUV.x *= uvScale;
+modifiedUV.y *= uvScale;
+
+float noise = noiseTexture.Sample(defaultSampler, modifiedUV).r;
+
+noise -= timeElapsed / maxTime;
+
+float3 colour = radiance;
+if (noise &lt; minAlphaTreshold)
+{
+    discard;
+    result.color.rgba = (0.0f, 0.0f, 0.0f, 0.0f);
+    return result;
+}
+
+result.color.rgb = (float3) colour;
+result.color.a = albedo.a;
+return result;</code></pre><h4><span style="color: #236fa1;">Threading</span></h4><p>During one of our courses we learned about threading and double buffered rendering and at the start of the project I created the base of the project and included the threading. This was also made easier at the start as none of the others I worked with needed to adjust their type of coding for this reason. <br><br><span style="color: #236fa1;">Main thread</span></p><pre class="language-cpp"><code>// Logic Thread
+std::thread logicThread(&amp;CallUpdate, &amp;gameWorld);
+// Main loop
+while (engine.BeginFrame())
+{
+    if (introVideo.IsPlaying() == true)
+    {
+         introVideo.Update(engine.GetDeltaTime());
+         introVideo.Render(engine);
+    }
+    else
+    {
+         syncDone = true;
+         gameWorld.Render();
+         while (!gameReady); // Wait for UpdateLoop
+    }
+
+    engine.EndFrame();
+    input.Update();
+    controllerInput.Refresh();
+    gameReady = false;
+
+    if (gameWorld.GameShouldQuit())
+    {
+         break;
+    }
+}
+
+if (logicThread.joinable() == true)
+{
+    logicThread.join();
+}</code></pre><p><span style="color: #236fa1;">Logic thread</span></p><pre class="language-cpp"><code>void CallUpdate(GameWorld* aGameWorld)
+{
+	Tga::Engine&amp; engine = *Tga::Engine::GetInstance();
+	while (globalMessage != WM_NCDESTROY)
+	{
+		if (syncDone == true)
+		{
+			syncDone = false;
+			if (aGameWorld-&gt;GetSoundEffectsOn())
+			{
+				Windbox::UpdateAudio(engine.GetDeltaTime());
+			}
+			aGameWorld-&gt;Update(engine.GetDeltaTime());
+			gameReady = true;
+		}
+
+		if (aGameWorld-&gt;GameShouldQuit())
+		{
+			break;
+		}
+	}
+}</code></pre><p>The double buffers we used was set up for the reason to not have any threading issues with accessing the same data from different threads.</p><pre class="language-cpp"><code>struct RenderData3DSprite
+{
+	Tga::SpriteSharedData* sharedData;
+	Tga::Sprite3DInstanceData* spriteInstance;
+};
+
+struct RenderData3D
+{
+	const Tga::ModelInstance* modelInstance = 0;
+};
+
+struct AnimatedRenderData3D
+{
+	const Tga::AnimatedModelInstance* animatedModelInstance;
+};
+
+struct BatchedSpriteRenderData
+{
+	Tga::SpriteSharedData sharedData;
+	std::vector&lt;Tga::Sprite3DInstanceData&gt; instances;
+};</code></pre></div></div></article></main><footer class="footer"><div class="footer__left"><div class="footer__copy"><p style="text-align: center;"><a href="https://gustavp.dev/about-me" target="_blank" rel="noopener noreferrer">About me</a></p></div></div><button onclick="backToTopFunction()" id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg><use xlink:href="https://gustavp.dev/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = { mobileMenuMode: 'sidebar', animationSpeed: 300, submenuWidth: 'auto', doubleClickTime: 500, mobileMenuExpandableSubmenus: true, relatedContainerForOverlayMenuSelector: '.navbar', };</script><script defer="defer" src="https://gustavp.dev/assets/js/scripts.min.js?v=9c5ab7a87221183f149a42b3cceb7956"></script><script>function publiiDetectLoadedImages () {
+         var images = document.querySelectorAll('img[loading]:not(.is-loaded)');
+         for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+               images[i].classList.add('is-loaded');
+               images[i].parentNode.classList.remove('is-img-loading');
+            } else {
+               images[i].addEventListener('load', function () {
+                  this.classList.add('is-loaded');
+                  this.parentNode.classList.remove('is-img-loading');
+               }, false);
+            }
+         }
+      }
+      publiiDetectLoadedImages();</script><script defer="defer" src="https://gustavp.dev/media/plugins/syntaxHighlighter/prism.js"></script><script src="https://gustavp.dev/media/plugins/pagePrefetching/quicklink.umd.js"></script><script>window.addEventListener('load', () => {
+					quicklink.listen({
+						prerender: true,
+						el: document.querySelector('body'),
+						delay: 0,
+						limit: Infinity,
+						throttle: Infinity,
+						timeout: 2000
+					});
+				});</script></body></html>
